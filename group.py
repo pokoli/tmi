@@ -393,21 +393,7 @@ class TmiMetaGroup(
         group = Group.__table__()
         table, _ = tables[None]
 
-        if table == group: 
-            print("EQUAL")
-        else:
-            print("NOT EQUAL")
-
-        #tables['baptism'] = {
-        #    None: (group, =='1000' ),
-        #    }
-        print("TABLES: ", str(tables))
-        print("TABLE: ", str(table))
-
         return [CharLength(table.name), table.name]
-        #return [
-        #    Case( (quotation.state == 'received', 0), else_=1),
-        #    quotation.state]
 
     def get_baptism_target(self, name=None):
         pool = Pool()
