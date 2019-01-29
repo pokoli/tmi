@@ -1,0 +1,11 @@
+<form col="8">
+    <label name="zona"/>
+    <field name="zona" widget="selection"/>
+    <label name="mes"/>
+    <field name="mes"/>
+    <label name="fecha_inicio"/>
+    <field name="fecha_inicio"/>
+    <label name="fecha_fin"/>
+    <field name="fecha_fin"/>
+
+</form>

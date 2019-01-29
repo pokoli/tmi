@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form col="4" cursor="name">
+    <label name="name"/>
+    <field name="name"/>
+    <label name="code"/>
+    <field name="code"/>
+    <!--
+    <group col="-1" colspan="2" id="checkboxes">
+        <label name="active"/>
+        <field name="active" xexpand="0" width="100"/>
+    </group>
+    -->
+    <notebook colspan="4">
+        <page string="General Information" id="general">
+            <label name="type"/>
+            <field name="type"/>
+            <label name="parent"/>
+            <field name="parent"/>
+            <label name="parent_type"/>
+            <field name="parent_type"/>
+            <label name="company"/>
+            <field name="company"/>
+        </page>
+        <page string="Targets" id="target" col="4">
+            <label name="tmi_baptism_target"/>
+            <field name="tmi_baptism_target"/>
+            <label name="tmi_tithe_target"/>
+            <field name="tmi_tithe_target"/>
+            <label name="tmi_offering_target"/>
+            <field name="tmi_offering_target"/>
+            <label name="tmi_church_planting_target"/>
+            <field name="tmi_church_planting_target"/>
+            <label name="tmi_gathering_target"/>
+            <field name="tmi_gathering_target"/>
+            <label name="tmi_small_group_target"/>
+            <field name="tmi_small_group_target"/>
+            <label name="tmi_organizing_church_target"/>
+            <field name="tmi_organizing_church_target"/>
+            <label name="tmi_praise_thanksgiving_target"/>
+            <field name="tmi_praise_thanksgiving_target"/>
+        </page> 
+        <page string="Children" id="children">
+            <field name="childs" colspan="4"/>
+        </page>
+        <page string="Other info" id="info">
+            <label name="currency"/>
+            <field name="currency"/>
+            <label name="child_value"/>
+            <field name="child_value"/>
+        </page>
+
+    </notebook>
+</form>

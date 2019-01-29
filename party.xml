@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="ir.ui.menu-res.group" id="menu_party_group_tmi_admin">
+            <field name="menu" ref="party.menu_party"/>
+            <field name="group" ref="tmi.tmi_group_admin"/>
+        </record>
+    </data>
+</tryton>

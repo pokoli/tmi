@@ -1,0 +1,17 @@
+<data>
+
+	<xpath expr="/form/field[@name=&quot;name&quot;]" position="after">
+                <label name="sexo"/>
+                <field name="sexo"/>
+                <label name="edad"/>
+                <field name="edad"/>
+    </xpath>
+    <xpath expr="/form/group[@id=&quot;checkboxes&quot;]/field[@name=&quot;active&quot;]" position="after">
+                <label name="es_lider"/>
+                <field name="es_lider"/>
+    </xpath>
+    <xpath expr="/form/notebook/page[@id=&quot;general&quot;]/field[@name=&quot;addresses&quot;]" position="before">
+        <field name="gps" colspan="4"/>
+    </xpath> 
+                   
+</data>

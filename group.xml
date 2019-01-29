@@ -1,0 +1,389 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="res.group" id="tmi_group">
+            <field name="name">TMI Group</field>
+        </record>
+        <record model="res.group" id="tmi_group_admin">
+            <field name="name">TMI Group Admin</field>
+        </record>
+        <record model="res.user-res.group" id="user_admin_tmi_group">
+            <field name="user" ref="res.user_admin"/>
+            <field name="group" ref="tmi_group"/>
+        </record>
+        <record model="res.user-res.group" id="user_admin_tmi_group_admin">
+            <field name="user" ref="res.user_admin"/>
+            <field name="group" ref="tmi_group_admin"/>
+        </record>
+
+        <!--
+        <record model="res.user-res.group" id="user_trigger_tmi_group">
+            <field name="user" ref="res.user_trigger"/>
+            <field name="group" ref="user_admin_tmi_group"/>
+        </record>
+        <record model="res.user-res.group" id="user_trigger_tmi_group_admin">
+            <field name="user" ref="res.user_trigger"/>
+            <field name="group" ref="user_admin_tmi_group_admin"/>
+        </record>
+        -->
+
+        <record model="ir.ui.icon" id="tmi_icon">
+            <field name="name">tmi-icon</field>
+            <field name="path">icons/tmi-icon.svg</field>
+        </record>
+
+        <menuitem name="TMI" id="menu_tmi" sequence="2"
+            icon="tmi-icon"/>
+        <record model="ir.ui.menu-res.group" id="menu_tmi_group">
+            <field name="menu" ref="menu_tmi"/>
+            <field name="group" ref="tmi_group"/>
+        </record>
+        <record model="ir.ui.menu-res.group" id="menu_tmi_group_admin">
+            <field name="menu" ref="menu_tmi"/>
+            <field name="group" ref="tmi_group_admin"/>
+        </record>
+
+        <menuitem name="Configuration" parent="menu_tmi"
+            id="menu_group_configuration" sequence="10"
+            />
+        <record model="ir.ui.menu-res.group"
+            id="menu_tmi_configuration_group_tmi_admin">
+            <field name="menu" ref="menu_group_configuration"/>
+            <field name="group" ref="tmi_group_admin"/>
+        </record>
+
+        <menuitem name="Reporting" parent="menu_tmi"
+            id="menu_reporting" sequence="60"/>
+
+        <record model="ir.rule.group" id="rule_tmi_group_meta">
+            <field name="model"
+                search="[('model', '=', 'tmi.meta.group')]"/>
+            <field name="global_p" eval="True"/>
+        </record>
+        <record model="ir.rule" id="rule_group_meta1">
+            <field name="domain"
+                eval="[('company', 'in', Eval('user', {}).get('companies', []))]"
+                pyson="1"/>
+            <field name="rule_group" ref="rule_tmi_group_meta"/>
+        </record>
+
+        <record model="ir.ui.view" id="group_view_form">
+            <field name="model">tmi.group</field>
+            <field name="type">form</field>
+            <field name="name">group_form</field>
+        </record>
+        <record model="ir.ui.view" id="group_view_tree">
+            <field name="model">tmi.group</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="20"/>
+            <field name="field_childs">childs</field>
+            <field name="name">group_tree</field>
+        </record>
+        <record model="ir.ui.view" id="group_view_list">
+            <field name="model">tmi.group</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="10"/>
+            <field name="name">group_list</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_group_tree">
+            <field name="name">Groups Tree</field>
+            <field name="res_model">tmi.group</field>
+            <!--<field name="domain" eval="[('parent', '=', None)]" pyson="1"/>-->
+        </record>
+        <record model="ir.action.act_window.view" id="act_group_tree_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="group_view_tree"/>
+            <field name="act_window" ref="act_group_tree"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_group_tree_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="group_view_form"/>
+            <field name="act_window" ref="act_group_tree"/>
+        </record>
+        <!--<menuitem parent="menu_group_configuration"
+            action="act_group_tree" id="menu_group_tree"/>-->
+
+        <record model="ir.action.act_window" id="act_group_list">
+            <field name="name">Groups</field>
+            <field name="res_model">tmi.group</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_group_list_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="group_view_list"/>
+            <field name="act_window" ref="act_group_list"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_group_list_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="group_view_form"/>
+            <field name="act_window" ref="act_group_list"/>
+        </record>
+        <menuitem parent="menu_group_configuration"
+            action="act_group_list" id="menu_group_list"
+            sequence="10"/>
+
+        <record model="ir.ui.view" id="group_view_list_amont_sheet">
+            <field name="model">tmi.group</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="20"/>
+            <field name="name">group_list_amont_sheet</field>
+        </record>
+        <record model="ir.action.act_window" id="act_group_statistical_balance">
+            <field name="name">Groups</field>
+            <field name="res_model">tmi.group</field>
+            <!--<field name="context_model">account.balance_sheet.context</field>-->
+            <field name="context_domain"
+                eval="[('company', '=', Eval('company', -1))]"
+                pyson="1"/>
+            <field name="domain"
+                eval="[('meta', 'child_of', Eval('active_id'), 'parent')]"
+                pyson="1"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_group_list2_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="group_view_list_amont_sheet"/>
+            <field name="act_window" ref="act_group_statistical_balance"/>
+        </record>
+
+        <!--
+        <record model="ir.action.wizard" id="act_open_type">
+            <field name="name">Open Type</field>
+            <field name="wiz_name">account.account.open_type</field>
+            <field name="model">account.account.type</field>
+        </record>
+        <record model="ir.action.keyword" id="act_open_type_keyword">
+            <field name="keyword">tree_open</field>
+            <field name="model">account.account.type,-1</field>
+            <field name="action" ref="act_open_type"/>
+        </record>
+        -->
+
+        <record model="ir.model.access" id="access_group">
+            <field name="model" search="[('model', '=', 'tmi.group')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_tmi_group_admin">
+            <field name="model" search="[('model', '=', 'tmi.group')]"/>
+            <field name="group" ref="tmi_group_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+        <record model="ir.rule.group" id="rule_tmi_group">
+            <field name="model" search="[('model', '=', 'tmi.group')]"/>
+            <field name="global_p" eval="True"/>
+        </record>
+        <record model="ir.rule" id="rule_group1">
+            <field name="domain"
+                eval="[('company', 'in', Eval('user', {}).get('companies', []))]"
+                pyson="1"/>
+            <field name="rule_group" ref="rule_tmi_group"/>
+        </record>
+
+        <!-- TODO relate from group -->
+
+        <record model="ir.ui.view" id="meta_group_view_form">
+            <field name="model">tmi.meta.group</field>
+            <field name="type">form</field>
+            <field name="name">meta_group_form</field>
+        </record>
+        <record model="ir.ui.view" id="meta_group_view_form_readonly">
+            <field name="model">tmi.meta.group</field>
+            <field name="type">form</field>
+            <field name="name">meta_group_form_readonly</field>
+        </record>
+        <record model="ir.ui.view" id="meta_group_view_tree">
+            <field name="model">tmi.meta.group</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="20"/>
+            <field name="field_childs">childs</field>
+            <field name="name">meta_group_tree</field>
+        </record>
+        <record model="ir.ui.view" id="meta_group_view_list">
+            <field name="model">tmi.meta.group</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="10"/>
+            <field name="name">meta_group_list</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_meta_group_tree">
+            <field name="name">Meta Groups Tree</field>
+            <field name="res_model">tmi.meta.group</field>
+            <field name="domain" eval="[('parent', '=', None)]" pyson="1"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_meta_group_tree_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="meta_group_view_tree"/>
+            <field name="act_window" ref="act_meta_group_tree"/>
+        </record>
+        <!--
+        <record model="ir.action.act_window.view" id="act_meta_group_tree_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="meta_group_view_form_readonly"/>
+            <field name="act_window" ref="act_meta_group_tree"/>
+        </record>-->
+        
+        <menuitem parent="menu_group_configuration"
+            action="act_meta_group_tree" id="menu_meta_group_tree"/>
+
+        <record model="ir.action.act_window" id="act_meta_group_list">
+            <field name="name">Meta Groups</field>
+            <field name="res_model">tmi.meta.group</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_meta_group_list_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="meta_group_view_list"/>
+            <field name="act_window" ref="act_meta_group_list"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_meta_group_list_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="meta_group_view_form"/>
+            <field name="act_window" ref="act_meta_group_list"/>
+        </record>
+        <menuitem parent="menu_meta_group_tree"
+            action="act_meta_group_list" id="menu_meta_group_list"
+            sequence="10"/>
+
+        <record model="ir.ui.view" id="group_statistical_balance_view_tree">
+            <field name="model">tmi.meta.group</field>
+            <field name="type">tree</field>
+            <field name="field_childs">childs</field>
+            <field name="name">group_statistical_balance_sheet_tree</field>
+        </record>
+        <record model="ir.ui.view" id="tmi_statistical_context_view_form">
+            <field name="model">tmi.statistical.context</field>
+            <field name="type">form</field>
+            <field name="name">tmi_statistical_context_form</field>
+        </record>
+        <record model="ir.action.act_window" id="act_group_statistical_balance_tree">
+            <field name="name">General Statistical Balance</field>
+            <field name="res_model">tmi.meta.group</field>
+            <field name="context_model">tmi.statistical.context</field>
+            <field name="context_domain"
+                eval="[('company', '=', Eval('company', -1))]"
+                pyson="1"/>
+            <field name="domain"
+                eval="[('parent', '=', None)]"
+                pyson="1"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_act_group_statistical_balance_tree_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="group_statistical_balance_view_tree"/>
+            <field name="act_window" ref="act_group_statistical_balance_tree"/>
+        </record>
+        <menuitem parent="menu_reporting" action="act_group_statistical_balance_tree"
+            id="menu_open_statistical_balance"/>
+
+        <record model="ir.ui.view" id="tmi_balance_view_tree">
+            <field name="model">tmi.meta.group</field>
+            <field name="type">tree</field>
+            <field name="field_childs">childs</field>
+            <field name="name">tmi_balance_tree</field>
+        </record>
+        <record model="ir.ui.view" id="tmi_balance_view_graph">
+            <field name="model">tmi.meta.group</field>
+            <field name="type">graph</field>
+            <field name="name">tmi_balance_graph</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_tmi_field_baptism_balance_tree_view">
+            <field name="name">Field Baptisms</field>
+            <field name="res_model">tmi.meta.group</field>
+            <field name="context_model">tmi.statistical.context</field>
+            <field name="domain"
+                eval="[('type', '=', 'field')]"
+                pyson="1"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_tmi_field_baptism_balance_tree_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="tmi_balance_view_tree"/>
+            <field name="act_window" ref="act_tmi_field_baptism_balance_tree_view"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_tmi_field_baptism_balance_graph_view1">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="tmi_balance_view_graph"/>
+            <field name="act_window" ref="act_tmi_field_baptism_balance_tree_view"/>
+        </record>
+        <menuitem parent="menu_reporting" action="act_tmi_field_baptism_balance_tree_view"
+            id="menu_open_field_baptism_balance" sequence="10"/>
+
+        <record model="ir.action.act_window" id="act_tmi_zone_baptism_balance_tree_view">
+            <field name="name">Zone Baptisms</field>
+            <field name="res_model">tmi.meta.group</field>
+            <field name="context_model">tmi.statistical.context</field>
+            <field name="domain"
+                eval="[('type', '=', 'zone')]"
+                pyson="1"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_tmi_zone_baptism_balance_tree_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="tmi_balance_view_tree"/>
+            <field name="act_window" ref="act_tmi_zone_baptism_balance_tree_view"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_tmi_zone_baptism_balance_tree_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="tmi_balance_view_graph"/>
+            <field name="act_window" ref="act_tmi_zone_baptism_balance_tree_view"/>
+        </record>
+        <menuitem parent="menu_reporting" action="act_tmi_zone_baptism_balance_tree_view"
+            id="menu_open_zone_baptism_balance" sequence="20"/>
+
+        <record model="ir.action.act_window" id="act_tmi_district_baptism_balance_tree_view">
+            <field name="name">District Baptisms</field>
+            <field name="res_model">tmi.meta.group</field>
+            <field name="context_model">tmi.statistical.context</field>
+            <field name="domain"
+                eval="[('type', '=', 'district')]"
+                pyson="1"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_tmi_district_baptism_balance_tree_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="tmi_balance_view_tree"/>
+            <field name="act_window" ref="act_tmi_district_baptism_balance_tree_view"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_tmi_district_baptism_balance_tree_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="tmi_balance_view_graph"/>
+            <field name="act_window" ref="act_tmi_district_baptism_balance_tree_view"/>
+        </record>
+        <menuitem parent="menu_reporting" action="act_tmi_district_baptism_balance_tree_view"
+            id="menu_open_district_baptism_balance" sequence="30"/>
+
+        <record model="ir.action.act_window" id="act_tmi_church_baptism_balance_tree_view">
+            <field name="name">Church Baptisms</field>
+            <field name="res_model">tmi.meta.group</field>
+            <field name="context_model">tmi.statistical.context</field>
+            <field name="domain"
+                eval="[('type', '=', 'church')]"
+                pyson="1"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_tmi_church_baptism_balance_tree_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="tmi_balance_view_tree"/>
+            <field name="act_window" ref="act_tmi_church_baptism_balance_tree_view"/>
+        </record>
+        <menuitem parent="menu_reporting" action="act_tmi_church_baptism_balance_tree_view"
+            id="menu_open_church_baptism_balance" sequence="40"/>
+
+        <!--
+        <record model="ir.ui.view" id="balance_sheet_context_view_form">
+            <field name="model">account.balance_sheet.context</field>
+            <field name="type">form</field>
+            <field name="name">balance_sheet_context_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="balance_sheet_comparision_context_view_form">
+            <field name="model">account.balance_sheet.comparision.context</field>
+            <field name="inherit" ref="balance_sheet_context_view_form"/>
+            <field name="name">balance_sheet_context_comparision_form</field>
+        </record>
+        -->
+    </data>
+</tryton>

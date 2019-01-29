@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form cursor="group" col="6">
+    <label name="number"/>
+    <field name="number"/>
+    <label name="post_number"/>
+    <field name="post_number"/>
+    <label name="company"/>
+    <field name="company"/>
+    <label name="date"/>
+    <field name="date"/>
+    <label name="post_date"/>
+    <field name="post_date"/>
+    <label name="group"/>
+    <field name="group"/>
+    <label name="period"/>
+    <field name="period"/>
+    <label name="description"/>
+    <field name="description"/>
+    <field name="lines" colspan="6"
+        view_ids="tmi.baptism_move_line_tree_view,tmi.baptism_move_line_view_form_move"/>
+    <label name="state"/>
+    <field name="state"/>
+    <group col="-1" colspan="4" id="buttons">
+        <button name="cancel" icon="tryton-cancel"/>
+        <button name="draft" icon="tryton-back"/>
+        <button name="quote" icon="tryton-forward"/>
+        <button name="post" icon="tryton-ok"/>
+    </group>
+</form>

@@ -1,0 +1,184 @@
+<tryton>
+    <data>
+        <menuitem name="Years" parent="menu_group_configuration"
+            id="menu_year_configuration"/>
+
+        <record model="ir.ui.view" id="year_view_form">
+            <field name="model">tmi.year</field>
+            <field name="type">form</field>
+            <field name="name">year_form</field>
+        </record>
+        <record model="ir.ui.view" id="year_view_tree">
+            <field name="model">tmi.year</field>
+            <field name="type">tree</field>
+            <field name="name">year_tree</field>
+        </record>
+        <record model="ir.ui.view" id="year_view_list_close">
+            <field name="model">tmi.year</field>
+            <field name="type">tree</field>
+            <field name="name">year_list_close</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_year_form">
+            <field name="name">Years</field>
+            <field name="res_model">tmi.year</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_year_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="year_view_tree"/>
+            <field name="act_window" ref="act_year_form"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_year_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="year_view_form"/>
+            <field name="act_window" ref="act_year_form"/>
+        </record>
+        <menuitem parent="menu_year_configuration"
+            action="act_year_form" id="menu_year_form"/>
+
+        <record model="ir.model.access" id="access_year">
+            <field name="model" search="[('model', '=', 'tmi.year')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_year_tmi_admin">
+            <field name="model" search="[('model', '=', 'tmi.year')]"/>
+            <field name="group" ref="tmi_group_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+        <record model="ir.model.button" id="year_create_period_button">
+            <field name="name">create_period</field>
+            <field name="string">Create Monthly Periods</field>
+            <field name="model"
+                search="[('model', '=', 'tmi.year')]"/>
+        </record>
+
+        <record model="ir.model.button" id="year_create_period_3_button">
+            <field name="name">create_period_3</field>
+            <field name="string">Create 3 Monthly Periods</field>
+            <field name="model"
+                search="[('model', '=', 'tmi.year')]"/>
+        </record>
+
+        <record model="ir.model.button" id="year_reopen_button">
+            <field name="name">reopen</field>
+            <field name="string">Re-Open</field>
+            <field name="model"
+                search="[('model', '=', 'tmi.year')]"/>
+        </record>
+        <record model="ir.model.button" id="year_close_button">
+            <field name="name">close</field>
+            <field name="string">Close</field>
+            <field name="model" search="[('model', '=', 'tmi.year')]"/>
+        </record>
+
+        <record model="ir.ui.view" id="period_view_form">
+            <field name="model">tmi.period</field>
+            <field name="type">form</field>
+            <field name="name">period_form</field>
+        </record>
+        <record model="ir.ui.view" id="period_view_tree">
+            <field name="model">tmi.period</field>
+            <field name="type">tree</field>
+            <field name="name">period_tree</field>
+        </record>
+        <record model="ir.ui.view" id="period_view_list_close">
+            <field name="model">tmi.period</field>
+            <field name="type">tree</field>
+            <field name="name">period_list_close</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_period_form">
+            <field name="name">Periods</field>
+            <field name="res_model">tmi.period</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_period_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="period_view_tree"/>
+            <field name="act_window" ref="act_period_form"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_period_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="period_view_form"/>
+            <field name="act_window" ref="act_period_form"/>
+        </record>
+        <menuitem parent="menu_year_form"
+            action="act_period_form" id="menu_period_form"
+            sequence="20"/>
+
+        <record model="ir.model.access" id="access_period">
+            <field name="model" search="[('model', '=', 'tmi.period')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_period_tmi_admin">
+            <field name="model" search="[('model', '=', 'tmi.period')]"/>
+            <field name="group" ref="tmi_group_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+        <record model="ir.model.button" id="period_close_button">
+            <field name="name">close</field>
+            <field name="string">Close</field>
+            <field name="model" search="[('model', '=', 'tmi.period')]"/>
+        </record>
+        <record model="ir.model.button-res.group"
+                id="period_close_button_group_tmi_admin">
+            <field name="button" ref="period_close_button"/>
+            <field name="group" ref="tmi_group_admin"/>
+        </record>
+        <record model="ir.model.button" id="period_reopen_button">
+            <field name="name">reopen</field>
+            <field name="string">Re-Open</field>
+            <field name="model" search="[('model', '=', 'tmi.period')]"/>
+        </record>
+        <record model="ir.model.button-res.group"
+                id="period_reopen_button_group_tmi_admin">
+            <field name="button" ref="period_reopen_button"/>
+            <field name="group" ref="tmi_group_admin"/>
+        </record>
+
+        <record model="ir.action.act_window" id="act_period_form_close">
+            <field name="name">Close Periods</field>
+            <field name="res_model">tmi.period</field>
+            <field name="search_value"
+                eval="[('state', '=', 'open')]" pyson="1"/>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_period_form_close_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="period_view_list_close"/>
+            <field name="act_window" ref="act_period_form_close"/>
+        </record>
+
+        <menuitem parent="menu_year_configuration" sequence="30"
+            action="act_period_form_close" id="menu_close_period"/>
+
+        <record model="ir.action.act_window" id="act_year_form_close">
+            <field name="name">Close Years</field>
+            <field name="res_model">tmi.year</field>
+            <field name="search_value"
+                eval="[('state', '=', 'open')]" pyson="1"/>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_year_form_close_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="year_view_list_close"/>
+            <field name="act_window" ref="act_year_form_close"/>
+        </record>
+
+        <menuitem parent="menu_year_configuration" sequence="40"
+            action="act_year_form_close" id="menu_close_year"/>
+ 
+    </data>
+</tryton>

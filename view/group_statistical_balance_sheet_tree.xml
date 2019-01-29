@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tree keyword_open="1">
+    <field name="name" expand="1"/>
+    <field name="baptism"/>
+    <field name="tithe"/>
+    <field name="church_planting"/>
+    <field name="gathering"/>
+    <field name="small_group"/>
+    <field name="organizing_church"/>
+    <field name="praise_thanksgiving"/>
+    <field name="offering"/>
+</tree>

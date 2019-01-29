@@ -1,0 +1,65 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+    	<record model="ir.sequence.type" id="sequence_type_move_tmi">
+            <field name="name">TMI Move</field>
+            <field name="code">tmi.move</field>
+        </record>
+		<record model="ir.sequence" id="sequence_move_tmi">
+            <field name="name">TMI Move</field>
+            <field name="code">tmi.move</field>
+        </record>
+        <record model="ir.sequence.type-res.group"
+            id="sequence_type_tmi_move_group_admin">
+            <field name="sequence_type" ref="sequence_move_tmi"/>
+            <field name="group" ref="res.group_admin"/>
+        </record>
+        <record model="ir.sequence.type-res.group"
+            id="sequence_type_tmi_move_group_tmi_group">
+            <field name="sequence_type" ref="sequence_move_tmi"/>
+            <field name="group" ref="tmi_group_admin"/>
+        </record>
+
+        <record model="ir.ui.view" id="configuration_view_form">
+            <field name="model">tmi.configuration</field>
+            <field name="type">form</field>
+            <field name="name">configuration_form</field>
+        </record>
+        <record model="ir.action.act_window"
+            id="act_configuration_form">
+            <field name="name">Group Configuration</field>
+            <field name="res_model">tmi.configuration</field>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_configuration_view1">
+            <field name="sequence" eval="1"/>
+            <field name="view" ref="configuration_view_form"/>
+            <field name="act_window" ref="act_configuration_form"/>
+        </record>
+        <menuitem parent="menu_group_configuration"
+            action="act_configuration_form"
+            id="menuitem_group_configuration"
+            sequence="0" icon="tryton-list"/>
+
+        <record model="ir.model.access" id="access_group_configuration">
+            <field name="model"
+                search="[('model', '=', 'tmi.configuration')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access"
+            id="access_group_configuration_account_admin">
+            <field name="model"
+                search="[('model', '=', 'tmi.configuration')]"/>
+            <field name="group" ref="tmi_group_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+    </data>
+</tryton>

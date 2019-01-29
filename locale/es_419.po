@@ -1,0 +1,1047 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "model:ir.sequence.type,name:sequence_type_move_tmi"
+msgid "TMI Move"
+msgstr "Reporte"
+
+msgctxt "model:ir.sequence,name:sequence_move_tmi"
+msgid "TMI Move"
+msgstr "Reporte"
+
+msgctxt "field:company.company,type:"
+msgid "Type"
+msgstr "Tipo"
+
+msgctxt "field:tmi.meta.group,name:"
+msgid "Name"
+msgstr "Nombre"
+
+msgctxt "field:tmi.meta.group,child_value:"
+msgid "Child Value"
+msgstr "Valor de Hijo"
+
+msgctxt "field:tmi.meta.group,code:"
+msgid "Code"
+msgstr "Código"
+
+msgctxt "field:tmi.meta.group,active:"
+msgid "Active"
+msgstr "Activo"
+
+msgctxt "field:tmi.meta.group,company:"
+msgid "Company"
+msgstr "Compañía"
+
+msgctxt "field:tmi.meta.group,currency:"
+msgid "Currency"
+msgstr "Moneda"
+
+msgctxt "field:tmi.meta.group,currency_digits:"
+msgid "Currency Digits"
+msgstr "Dígitos"
+
+msgctxt "field:tmi.meta.group,parent:"
+msgid "Parent"
+msgstr "Superior"
+
+msgctxt "field:tmi.meta.group,childs:"
+msgid "Childs"
+msgstr "Dependencias"
+
+msgctxt "field:tmi.meta.group,baptism:"
+msgid "Baptism"
+msgstr "Bautismo"
+
+msgctxt "field:tmi.meta.group,type:"
+msgid "Type"
+msgstr "Tipo"
+
+msgctxt "field:tmi.meta.group,tmi_baptism_target:"
+msgid "Baptism Target"
+msgstr "Meta de Bautismo"
+
+msgctxt "selection:company.company,type:"
+msgid "Conference"
+msgstr "Conferencia"
+
+msgctxt "selection:company.company,type:"
+msgid "Division"
+msgstr "División"
+
+msgctxt "selection:company.company,type:"
+msgid "Union"
+msgstr "Unión"
+
+msgctxt "selection:company.company,type:"
+msgid "Field"
+msgstr "Campo"
+
+msgctxt "selection:company.company,type:"
+msgid "Zone"
+msgstr "Zona"
+
+msgctxt "selection:company.company,type:"
+msgid "District"
+msgstr "Distrito"
+
+msgctxt "field:tmi.meta.group,rec_name:"
+msgid "Record Name"
+msgstr "Nombre del registro"
+
+msgctxt "field:tmi.configuration,tmi_move_sequence:"
+msgid "TMI Move Sequence"
+msgstr "Secuencia de Reporte"
+
+msgctxt "field:tmi.configuration,tmi_baptism_target:"
+msgid "TMI Group Baptism Target"
+msgstr "Meta de Bautismo"
+
+msgctxt "field:tmi.configuration,tmi_small_group_target:"
+msgid "TMI Group Small Group Target"
+msgstr "Meta de Grupos Pequeño"
+
+msgctxt "field:tmi.configuration,tmi_tithe_target:"
+msgid "TMI Group Tithe Target"
+msgstr "Meta de Diezmo"
+
+msgctxt "field:tmi.configuration,tmi_offering_target:"
+msgid "TMI Group Offering Target"
+msgstr "Meta de Ofrendas"
+
+msgctxt "field:tmi.configuration,tmi_praise_thanksgiving_target:"
+msgid "TMI Group Praise and Thanksgiving Target"
+msgstr "Meta de Alabanza y Gratitud"
+
+msgctxt "field:tmi.configuration,tmi_gathering_target:"
+msgid "TMI Group Gathering Target"
+msgstr "Meta de Recolección"
+
+msgctxt "field:tmi.configuration,tmi_church_planting_target:"
+msgid "TMI Group Church Planting Target"
+msgstr "Meta de Plantando Iglesias"
+
+msgctxt "field:tmi.configuration,tmi_organizing_church_target:"
+msgid "TMI Group Organizing Church Target"
+msgstr "Meta de Organizando Iglesias"
+
+msgctxt "field:tmi.configuration.sequence,tmi_move_sequence:"
+msgid "TMI Sequence"
+msgstr "Secuencia"
+
+msgctxt "field:tmi.configuration.target,configuration:"
+msgid "Configuration"
+msgstr "Configuración"
+
+msgctxt "field:tmi.configuration.target,tmi_baptism_target:"
+msgid "TMI Group Baptism Target"
+msgstr "Meta de Bautismo por Group"
+
+msgctxt "field:tmi.configuration.target,tmi_small_group_target:"
+msgid "TMI Group Small Group Target"
+msgstr "Meta de Grupo Pequeño"
+
+msgctxt "field:tmi.configuration.target,tmi_tithe_target:"
+msgid "TMI Group Tithe Target" 
+msgstr "Meta de Bautismo por Grupo"
+
+msgctxt "field:tmi.configuration.target,tmi_offering_target:"
+msgid "TMI Group Offering Target"
+msgstr "Meta de Ofrendas por Grupo"
+
+msgctxt "field:tmi.configuration.target,tmi_praise_thanksgiving_target:"
+msgid "TMI Group Praise and Thanksgiving Target"
+msgstr "Meta de Alabanza y Gratitud por Grupo"
+
+msgctxt "field:tmi.configuration.target,tmi_gathering_target:"
+msgid "TMI Group Gathering Target"
+msgstr "Meta de Recolección por Grupo"
+
+msgctxt "field:tmi.configuration.target,tmi_church_planting_target:"
+msgid "TMI Group Church Planting Target"
+msgstr "Meta de Plantando Iglesias por Grupo"
+
+msgctxt "field:tmi.configuration.target,tmi_organizing_church_target:"
+msgid "TMI Group Organizing Church Target"
+msgstr "Meta de Organizando Iglesias por Grupo"
+
+msgctxt "field:tmi.meta.group,name:"
+msgid "Name"
+msgstr "Nombre"
+
+msgctxt "field:tmi.meta.group,code:"
+msgid "Code"
+msgstr "Código"
+
+msgctxt "field:tmi.meta.group,active:"
+msgid "Active"
+msgstr "Activo"
+
+msgctxt "field:tmi.meta.group,company:"
+msgid "Company"
+msgstr "Empresa"
+
+msgctxt "field:tmi.meta.group,currency:"
+msgid "Currency"
+msgstr "Moneda"
+
+msgctxt "field:tmi.meta.group,currency_digits:"
+msgid "Currency Digits"
+msgstr "Dígitos de Moneda"
+
+msgctxt "field:tmi.meta.group,parent:"
+msgid "Parent"
+msgstr "Grupo Superior"
+
+msgctxt "field:tmi.meta.group,childs:"
+msgid "Childs"
+msgstr "Dependencias"
+
+msgctxt "field:tmi.meta.group,baptism:"
+msgid "Baptism"
+msgstr "Bautismos"
+
+msgctxt "field:tmi.meta.group,small_group:"
+msgid "Small Group"
+msgstr "Grupos Pequeños"
+
+msgctxt "field:tmi.meta.group,tithe:"
+msgid "Tithe"
+msgstr "Diezmo"
+
+msgctxt "field:tmi.meta.group,offering:"
+msgid "Offering"
+msgstr "Ofrenda"
+
+msgctxt "field:tmi.meta.group,praise_thanksgiving:"
+msgid "Praise and Thanksgiving"
+msgstr "Alabanza y Gratitud"
+
+msgctxt "field:tmi.meta.group,gathering:"
+msgid "Gathering"
+msgstr "Recolección"
+
+msgctxt "field:tmi.meta.group,church_planting:"
+msgid "Church Planting"
+msgstr "Plantando Iglesias"
+
+msgctxt "field:tmi.meta.group,organizing_church:"
+msgid "Organizing Church"
+msgstr "Organizando Iglesias"
+
+msgctxt "field:tmi.meta.group,type:"
+msgid "Type"
+msgstr "Tipo"
+
+msgctxt "selection:tmi.meta.group,type:"
+msgid "Conference"
+msgstr "Conferencia"
+
+msgctxt "selection:tmi.meta.group,type:"
+msgid "Division"
+msgstr "División"
+
+msgctxt "selection:tmi.meta.group,type:"
+msgid "Union"
+msgstr "Unión"
+
+msgctxt "selection:tmi.meta.group,type:"
+msgid "Field"
+msgstr "Campo"
+
+msgctxt "selection:tmi.meta.group,type:"
+msgid "Zone"
+msgstr "Zona"
+
+msgctxt "selection:tmi.meta.group,type:"
+msgid "District"
+msgstr "Distrito"
+
+msgctxt "selection:tmi.meta.group,type:"
+msgid "Church"
+msgstr "Iglesia"
+
+msgctxt "selection:tmi.meta.group,type:"
+msgid "Small Group"
+msgstr "Grupo Pequeño"
+
+msgctxt "selection:tmi.meta.group,type:"
+msgid "Type"
+msgstr "Tipo"
+
+msgctxt "field:tmi.meta.group,parent_type:"
+msgid "Parent Type"
+msgstr "Tipo de Superior"
+
+msgctxt "selection:tmi.meta.group,parent_type:"
+msgid "Conference"
+msgstr "Conferencia"
+
+msgctxt "selection:tmi.meta.group,parent_type:"
+msgid "Division"
+msgstr "División"
+
+msgctxt "selection:tmi.meta.group,parent_type:"
+msgid "Union"
+msgstr "Unión"
+
+msgctxt "selection:tmi.meta.group,parent_type:"
+msgid "Field"
+msgstr "Campo"
+
+msgctxt "selection:tmi.meta.group,parent_type:"
+msgid "Zone"
+msgstr "Zona"
+
+msgctxt "selection:tmi.meta.group,parent_type:"
+msgid "District"
+msgstr "Distrito"
+
+msgctxt "selection:tmi.meta.group,parent_type:"
+msgid "Church"
+msgstr "Iglesia"
+
+msgctxt "selection:tmi.meta.group,parent_type:"
+msgid "Parent Type"
+msgstr "Tipo Superior"
+
+msgctxt "field:tmi.meta.group,company:"
+msgid "Company"
+msgstr "Compañía"
+
+msgctxt "field:tmi.meta.group,tmi_baptism_target:"
+msgid "Baptism Target"
+msgstr "Meta de Bautismo"
+
+msgctxt "field:tmi.meta.group,tmi_small_group_target:"
+msgid "Small Group Target"
+msgstr "Meta de Bautismo"
+
+msgctxt "field:tmi.meta.group,tmi_tithe_target:"
+msgid "Tithe Target"
+msgstr "Meta de Diezmo"
+
+msgctxt "field:tmi.meta.group,tmi_offering_target:"
+msgid "Offering Target"
+msgstr "Meta de Ofrenda"
+
+msgctxt "field:tmi.meta.group,tmi_praise_thanksgiving_target:"
+msgid "Praise and Thanksgiving Target"
+msgstr "Meta de Alabanza y Gratitud"
+
+msgctxt "field:tmi.meta.group,tmi_gathering_target:"
+msgid "Gathering Target"
+msgstr "Meta de Recolección"
+
+msgctxt "field:tmi.meta.group,tmi_church_planting_target:"
+msgid "Church Planting Target"
+msgstr "Meta de Plantando Iglesias"
+
+msgctxt "field:tmi.meta.group,tmi_organizing_church_target:"
+msgid "Organizing Church Target"
+msgstr "Meta de Organizando Iglesias"
+
+msgctxt "field:tmi.meta.group,tmi_baptism_difference:"
+msgid "Baptism Difference"
+msgstr "Diferencial de Bautismo"
+
+msgctxt "field:tmi.meta.group,tmi_small_group_difference:"
+msgid "Small Group Difference"
+msgstr "Diferencial de Grupo Pequeño"
+
+msgctxt "field:tmi.meta.group,tmi_tithe_difference:"
+msgid "Tithe Difference"
+msgstr "Diferencial de Diezmo"
+
+msgctxt "field:tmi.meta.group,tmi_offering_difference:"
+msgid "Offering Difference"
+msgstr "Diferencial de Ofrenda"
+
+msgctxt "field:tmi.meta.group,tmi_praise_thanksgiving_difference:"
+msgid "Praise and Thanksgiving Difference"
+msgstr "Diferencial de Alabanza y Gratitud"
+
+msgctxt "field:tmi.meta.group,tmi_gathering_difference:"
+msgid "Gathering Difference"
+msgstr "Diferencial de Recolección"
+
+msgctxt "field:tmi.meta.group,tmi_church_planting_difference:"
+msgid "Church Planting Difference"
+msgstr "Diferencial de Plantando Iglesias"
+
+msgctxt "field:tmi.meta.group,tmi_organizing_church_difference:"
+msgid "Organizing Church Difference"
+msgstr "Diferencial de Organizando Iglesias"
+
+msgctxt "field:tmi.meta.group,tmi_baptism_percentage:"
+msgid "Baptism Percentage"
+msgstr "Porcentaje de Bautismo"
+
+msgctxt "field:tmi.meta.group,tmi_small_group_percentage:"
+msgid "Small Group Percentage"
+msgstr "Porcentaje de Grupo Pequeño"
+
+msgctxt "field:tmi.meta.group,tmi_tithe_percentage:"
+msgid "Tithe Percentage"
+msgstr "Porcentaje de Diezmo"
+
+msgctxt "field:tmi.meta.group,tmi_offering_percentage:"
+msgid "Offering Percentage"
+msgstr "Porcentaje de Ofrenda"
+
+msgctxt "field:tmi.meta.group,tmi_praise_thanksgiving_percentage:"
+msgid "Praise and Thanksgiving Percentage"
+msgstr "Porcentaje de Alabanza y Gratitud"
+
+msgctxt "field:tmi.meta.group,tmi_gathering_percentage:"
+msgid "Gathering Percentage"
+msgstr "Porcentaje de Recolección"
+
+msgctxt "field:tmi.meta.group,tmi_church_planting_percentage:"
+msgid "Church Planting Percentage"
+msgstr "Porcentaje de Plantando Iglesias"
+
+msgctxt "field:tmi.meta.group,tmi_organizing_church_percentage:"
+msgid "Organizing Church Percentage"
+msgstr "Porcentaje de Organizando Iglesias"
+
+msgctxt "field:tmi.meta.group,level:"
+msgid "Level"
+msgstr "Nivel"
+
+msgctxt "field:tmi.group,name:"
+msgid "Name"
+msgstr "Nombre"
+
+msgctxt "field:tmi.group,code:"
+msgid "Code"
+msgstr "Código"
+
+msgctxt "field:tmi.group,meta:"
+msgid "Meta"
+msgstr "Meta Grupo"
+
+msgctxt "field:tmi.group,type:"
+msgid "Type"
+msgstr "Tipo"
+
+msgctxt "field:tmi.group,parent:"
+msgid "Parent"
+msgstr "Superior"
+
+msgctxt "field:tmi.group,childs:"
+msgid "Childs"
+msgstr "Dependientes"
+
+msgctxt "field:tmi.group,active:"
+msgid "Active"
+msgstr "Activo"
+
+msgctxt "field:tmi.group,company:"
+msgid "Company"
+msgstr "Compañía"
+
+msgctxt "field:tmi.group,currency:"
+msgid "Currency"
+msgstr "Moneda"
+
+msgctxt "field:tmi.group,parent_type:"
+msgid "Parent Type"
+msgstr "Tipo Superior"
+
+msgctxt "field:tmi.year,name:"
+msgid "Name"
+msgstr "Nombre"
+
+msgctxt "field:tmi.year,start_date:"
+msgid "Start Date"
+msgstr "Fecha Inicial"
+
+msgctxt "field:tmi.year,end_date:"
+msgid "End Date"
+msgstr "Fecha Final"
+
+msgctxt "field:tmi.year,periods:"
+msgid "Periods"
+msgstr "Periodos"
+
+msgctxt "field:tmi.year,state:"
+msgid "State"
+msgstr "Estado"
+
+msgctxt "selection:tmi.year,state:"
+msgid "Open"
+msgstr "Abierto"
+
+msgctxt "selection:tmi.year,state:"
+msgid "Close"
+msgstr "Cerrado"
+
+msgctxt "field:tmi.period,name:"
+msgid "Name"
+msgstr "Nombre"
+
+msgctxt "field:tmi.period,start_date:"
+msgid "Start Date"
+msgstr "Fecha Inicial"
+
+msgctxt "field:tmi.period,end_date:"
+msgid "End Date"
+msgstr "Fecha Final"
+
+msgctxt "field:tmi.period,year:"
+msgid "Year"
+msgstr "Año"
+
+msgctxt "field:tmi.period,state:"
+msgid "State"
+msgstr "Estado"
+
+msgctxt "selection:tmi.period,state:"
+msgid "Open"
+msgstr "Abierto"
+
+msgctxt "selection:tmi.period,state:"
+msgid "Close"
+msgstr "Cerrado"
+
+msgctxt "field:tmi.period,type:"
+msgid "State"
+msgstr "Estado"
+
+msgctxt "selection:tmi.period,type:"
+msgid "Standard"
+msgstr "Estándar"
+
+msgctxt "selection:tmi.period,type:"
+msgid "Adjustment"
+msgstr "Ajuste"
+
+msgctxt "field:tmi.period,icon:"
+msgid "Icon"
+msgstr "Ícono"
+
+msgctxt "view:tmi.year:"
+msgid "Periods"
+msgstr "Periodos"
+
+msgctxt "selection:tmi.group,type:"
+msgid "District"
+msgstr "Distrito"
+
+msgctxt "selection:tmi.group,type:"
+msgid "Church"
+msgstr "Iglesia"
+
+msgctxt "selection:tmi.group,type:"
+msgid "Small Group"
+msgstr "Grupo Pequeño"
+
+msgctxt "field:tmi.group,rec_name:"
+msgid "Record Name"
+msgstr "Nombre del registro"
+
+msgctxt "view:tmi.configuration:"
+msgid "Sequences"
+msgstr "Secuencias"
+
+msgctxt "view:tmi.configuration:"
+msgid "Group Targets"
+msgstr "Metas de Grupo" 
+
+msgctxt "view:tmi.group:"
+msgid "General Information"
+msgstr "Información General" 
+
+msgctxt "view:tmi.group:"
+msgid "Children"
+msgstr "Dependencias" 
+
+msgctxt "view:tmi.group:"
+msgid "Other info"
+msgstr "Otra información" 
+
+msgctxt "view:tmi.meta.group:"
+msgid "General Information"
+msgstr "Información General"
+
+msgctxt "view:tmi.meta.group:"
+msgid "Targets"
+msgstr "Metas"
+
+msgctxt "view:tmi.meta.group:"
+msgid "Children"
+msgstr "Dependencias"
+
+msgctxt "view:tmi.meta.group:"
+msgid "Other infor"
+msgstr "Otra información"
+
+msgctxt "model:ir.ui.menu,name:menu_group_configuration"
+msgid "Group Configuration"
+msgstr "Configuración de Grupos"
+
+msgctxt "model:ir.action,name:act_configuration_form"
+msgid "Group Configuration"
+msgstr "Configuración de Grupos"
+
+msgctxt "model:ir.ui.menu,name:menuitem_group_configuration"
+msgid "Group Configuration"
+msgstr "Configuración"
+
+msgctxt "model:ir.action,name:act_group_list"
+msgid "Groups"
+msgstr "Grupos"
+
+msgctxt "model:ir.ui.menu,name:menu_group_list"
+msgid "Groups"
+msgstr "Grupos"
+
+msgctxt "model:ir.action,name:act_meta_group_tree"
+msgid "Meta Groups Tree"
+msgstr "Árbol de Meta Grupos"
+
+msgctxt "model:ir.ui.menu,name:menu_meta_group_tree"
+msgid "Meta Groups Tree"
+msgstr "Árbol de Meta Grupos"
+
+msgctxt "model:ir.action,name:act_meta_group_list"
+msgid "Meta Groups"
+msgstr "Meta Grupos"
+
+msgctxt "model:ir.ui.menu,name:menu_meta_group_list"
+msgid "Meta Groups"
+msgstr "Meta Grupos"
+
+msgctxt "model:ir.ui.menu,name:menu_year_configuration"
+msgid "Years"
+msgstr "Años"
+
+msgctxt "model:ir.action,name:act_year_form"
+msgid "Years"
+msgstr "Años"
+
+msgctxt "model:ir.ui.menu,name:menu_year_form"
+msgid "Years"
+msgstr "Años"
+
+msgctxt "model:ir.action,name:act_period_form"
+msgid "Periods"
+msgstr "Periodos"
+
+msgctxt "model:ir.ui.menu,name:menu_period_form"
+msgid "Periods"
+msgstr "Periodos"
+
+msgctxt "model:ir.action,name:act_period_form_close"
+msgid "Close Periods"
+msgstr "Cerrar Periodos"
+
+msgctxt "model:ir.ui.menu,name:menu_close_period"
+msgid "Close Periods"
+msgstr "Cerrar Periodos"
+
+msgctxt "model:ir.action,name:act_year_form_close"
+msgid "Close Years"
+msgstr "Cerrar Años"
+
+msgctxt "model:ir.ui.menu,name:menu_close_year"
+msgid "Close Years"
+msgstr "Cerrar Años"
+
+msgctxt "model:ir.model.button,string:year_reopen_button"
+msgid "Re-Open"
+msgstr "Re-Abrir"
+
+msgctxt "model:ir.model.button,string:year_close_button"
+msgid "Close"
+msgstr "Cerrar"
+
+msgctxt "model:ir.model.button,string:year_create_period_button"
+msgid "Create Monthly Periods"
+msgstr "Crear Periodos Mensuales"
+
+msgctxt "model:ir.model.button,string:period_reopen_button"
+msgid "Re-Open"
+msgstr "Re-Abrir"
+
+msgctxt "model:ir.model.button,string:period_close_button"
+msgid "Close"
+msgstr "Cerrar"
+
+msgctxt "field:tmi.move,number:"
+msgid "Number"
+msgstr "Número"
+
+msgctxt "field:tmi.move,post_number:"
+msgid "Post Number"
+msgstr "Número de Contabilización"
+
+msgctxt "field:tmi.move,company:"
+msgid "Company"
+msgstr "Compañía"
+
+msgctxt "field:tmi.move,date:"
+msgid "Date"
+msgstr "Fecha"
+
+msgctxt "field:tmi.move,post_date:"
+msgid "Post Date"
+msgstr "Fecha de Contabilización"
+
+msgctxt "field:tmi.move,description:"
+msgid "Description"
+msgstr "Descripción"
+
+msgctxt "field:tmi.move,lines:"
+msgid "Lines"
+msgstr "Líneas"
+
+msgctxt "field:tmi.move,state:"
+msgid "State"
+msgstr "Estado"
+
+msgctxt "selection:tmi.move,state:"
+msgid "Draft"
+msgstr "Borrador"
+
+msgctxt "selection:tmi.move,state:"
+msgid "Posted"
+msgstr "Contabilizado"
+
+msgctxt "selection:tmi.move,state:"
+msgid "Quotation"
+msgstr "Borrador"
+
+msgctxt "selection:tmi.move,state:"
+msgid "Quotation"
+msgstr "Borrador"
+
+msgctxt "selection:tmi.move,state:"
+msgid "Canceled"
+msgstr "Cancelado"
+
+msgctxt "field:tmi.move,group:"
+msgid "Group"
+msgstr "Grupo"
+
+msgctxt "field:tmi.move,period:"
+msgid "Period"
+msgstr "Periodo"
+
+msgctxt "field:tmi.move.line,group:"
+msgid "Group"
+msgstr "Grupo"
+
+msgctxt "field:tmi.move.line,tithe:"
+msgid "Tithe"
+msgstr "Diezmo"
+
+msgctxt "field:tmi.move.line,baptism:"
+msgid "Baptism"
+msgstr "Bautismo"
+
+msgctxt "field:tmi.move.line,church_planting:"
+msgid "Church Planting"
+msgstr "Plantando Iglesias"
+
+msgctxt "field:tmi.move.line,gathering:"
+msgid "Gathering"
+msgstr "Recolección"
+
+msgctxt "field:tmi.move.line,small_group:"
+msgid "Small Group"
+msgstr "Grupo Pequeño"
+
+msgctxt "field:tmi.move.line,organizing_church:"
+msgid "Organizing Church"
+msgstr "Organizando Iglesias"
+
+msgctxt "field:tmi.move.line,praise_thanksgiving:"
+msgid "Praise and Thanksgiving"
+msgstr "Alabanza y Gratitud"
+
+msgctxt "field:tmi.move.line,offering:"
+msgid "Offering"
+msgstr "Ofrenda"
+
+msgctxt "field:tmi.move.line,move:"
+msgid "Move"
+msgstr "Reporte"
+
+msgctxt "field:tmi.move.line,date:"
+msgid "Date"
+msgstr "Fecha"
+
+msgctxt "field:tmi.move.line,description:"
+msgid "Description"
+msgstr "Descripción"
+
+msgctxt "field:tmi.move.line,state:"
+msgid "State"
+msgstr "Estado"
+
+msgctxt "selection:tmi.move.line,state:"
+msgid "Draft"
+msgstr "Borrador"
+
+msgctxt "selection:tmi.move.line,state:"
+msgid "Valid"
+msgstr "Válido"
+
+msgctxt "model:ir.model.button,string:tmi_cancel_button"
+msgid "Cancel"
+msgstr "Cancelar"
+
+msgctxt "model:ir.model.button,string:tmi_draft_button"
+msgid "Draft"
+msgstr "Borrador"
+
+msgctxt "model:ir.model.button,string:tmi_quote_button"
+msgid "Quote"
+msgstr "Enumerar"
+
+msgctxt "model:ir.model.button,string:tmi_post_button"
+msgid "Post"
+msgstr "Contabilizar"
+
+msgctxt "model:ir.action,name:act_quote_tmi_move"
+msgid "Move to Draft"
+msgstr "Mover a Borrador"
+
+msgctxt "field:tmi.move.quote.default,description:"
+msgid "Description"
+msgstr "Descripción"
+
+msgctxt "wizard_button:tmi.move.quote,default,end:"
+msgid "Cancel"
+msgstr "Cancelar"
+
+msgctxt "wizard_button:tmi.move.quote,default,cancel:"
+msgid "Ok"
+msgstr "Aceptar" 
+
+msgctxt "model:ir.ui.menu,name:menu_entries"
+msgid "Entries"
+msgstr "Ingreso de Reportes"
+
+msgctxt "model:ir.action,name:act_move_tree"
+msgid "TMI Moves Reports"
+msgstr "Reporte Completo"
+
+msgctxt "model:ir.ui.menu,name:menu_move_tree"
+msgid "TMI Moves Reports"
+msgstr "Reporte Completo"
+
+msgctxt "model:ir.action,name:act_baptism_move_tree"
+msgid "Baptism Reports"
+msgstr "Reporte de Bautismos"
+
+msgctxt "model:ir.ui.menu,name:menu_baptism_move_tree"
+msgid "Baptism Reports"
+msgstr "Reporte de Bautismos"
+
+msgctxt "model:ir.action.act_window.domain,name:act_baptism_move_domain_draft"
+msgid "Draft"
+msgstr "Borrador"
+
+msgctxt "model:ir.action.act_window.domain,name:act_baptism_move_domain_validated"
+msgid "Quotation"
+msgstr "Enumerado"
+
+msgctxt "model:ir.action.act_window.domain,name:act_baptism_move_domain_posted"
+msgid "Posted"
+msgstr "Contabilizado"
+
+msgctxt "model:ir.action.act_window.domain,name:act_baptism_move_domain_all"
+msgid "All"
+msgstr "Todos"
+
+msgctxt "model:ir.action.act_window.domain,name:act_move_domain_draft"
+msgid "Draft"
+msgstr "Borrador"
+
+msgctxt "model:ir.action.act_window.domain,name:act_move_domain_validated"
+msgid "Quotation"
+msgstr "Enumerado"
+
+msgctxt "model:ir.action.act_window.domain,name:act_move_domain_posted"
+msgid "Posted"
+msgstr "Contabilizado"
+
+msgctxt "model:ir.action.act_window.domain,name:act_move_domain_all"
+msgid "All"
+msgstr "Todos"
+
+msgctxt "model:ir.ui.menu,name:menu_reporting"
+msgid "Reporting"
+msgstr "Reportes de Bautismo"
+
+msgctxt "model:ir.action,name:act_group_statistical_balance_tree"
+msgid "General Statistical Balance"
+msgstr "Balance Estadístico General"
+
+msgctxt "model:ir.ui.menu,name:menu_open_statistical_balance"
+msgid "General Statistical Balance"
+msgstr "Balance Estadístico General"
+
+msgctxt "model:ir.action,name:act_tmi_field_baptism_balance_tree_view"
+msgid "Field Baptisms"
+msgstr "Por Campo"
+
+msgctxt "model:ir.ui.menu,name:menu_open_field_baptism_balance"
+msgid "Field Baptisms"
+msgstr "Por Campo"
+
+msgctxt "model:ir.action,name:act_tmi_zone_baptism_balance_tree_view"
+msgid "Zone Baptisms"
+msgstr "Por Zona"
+
+msgctxt "model:ir.ui.menu,name:menu_open_zone_baptism_balance"
+msgid "Field Baptisms"
+msgstr "Por Zona"
+
+msgctxt "model:ir.action,name:act_tmi_district_baptism_balance_tree_view"
+msgid "District Baptisms"
+msgstr "Por Distrito"
+
+msgctxt "model:ir.ui.menu,name:menu_open_district_baptism_balance"
+msgid "District Baptisms"
+msgstr "Por Distrito"
+
+msgctxt "model:ir.action,name:act_tmi_church_baptism_balance_tree_view"
+msgid "Church Baptisms"
+msgstr "Por Iglesia"
+
+msgctxt "model:ir.ui.menu,name:menu_open_church_baptism_balance"
+msgid "Church Baptisms"
+msgstr "Por Iglesia"
+
+msgctxt "field:tmi.statistical.context,year:"
+msgid "Year"
+msgstr "Año"
+
+msgctxt "field:tmi.statistical.context,posted:"
+msgid "Posted"
+msgstr "Contabilizado"
+
+msgctxt "field:tmi.statistical.context,start_period:"
+msgid "Start Period"
+msgstr "Periodo Inicial"
+
+msgctxt "field:tmi.statistical.context,end_period:"
+msgid "End Period"
+msgstr "Periodo Final"
+
+msgctxt "field:tmi.statistical.context,from_date:"
+msgid "From Date"
+msgstr "Fecha Inicial"
+
+msgctxt "field:tmi.statistical.context,to_date:"
+msgid "To Date"
+msgstr "Fecha Final"
+
+msgctxt "model:ir.ui.menu,name:menu_printing"
+msgid "Printing"
+msgstr "Impresos"
+
+msgctxt "model:ir.action,name:wizard_print_tmi_report"
+msgid "Print Report"
+msgstr "Reporte General"
+
+msgctxt "model:ir.ui.menu,name:menu_print_tmi_report"
+msgid "Print Report"
+msgstr "Reporte General"
+
+msgctxt "field:print.tmi.report.start,company:"
+msgid "Company"
+msgstr "Empresa"
+
+msgctxt "field:print.tmi.report.start,start_date:"
+msgid "Start Date"
+msgstr "Fecha Inicial"
+
+msgctxt "field:print.tmi.report.start,end_date:"
+msgid "End Date"
+msgstr "Fecha Final"
+
+msgctxt "field:print.tmi.report.start,group:"
+msgid "Group"
+msgstr "Meta Grupo"
+
+msgctxt "field:print.tmi.report.start,type:"
+msgid "Type"
+msgstr "Tipo"
+
+msgctxt "selection:print.tmi.report.start,type:"
+msgid "Conference"
+msgstr "Conferencia"
+
+msgctxt "selection:print.tmi.report.start,type:"
+msgid "Division"
+msgstr "División"
+
+msgctxt "selection:print.tmi.report.start,type:"
+msgid "Union"
+msgstr "Unión"
+
+msgctxt "selection:print.tmi.report.start,type:"
+msgid "Field"
+msgstr "Campo"
+
+msgctxt "selection:print.tmi.report.start,type:"
+msgid "Zone"
+msgstr "Zona"
+
+msgctxt "selection:print.tmi.report.start,type:"
+msgid "District"
+msgstr "Distrito"
+
+msgctxt "selection:print.tmi.report.start,type:"
+msgid "Church"
+msgstr "Iglesia"
+
+msgctxt "field:print.tmi.report.start,posted:"
+msgid "Posted"
+msgstr "Contabilizado"
+
+msgctxt "wizard_button:print.tmi.report,start,end:"
+msgid "Cancel"
+msgstr "Cancelar"
+
+msgctxt "wizard_button:print.tmi.report,start,print_:"
+msgid "Print"
+msgstr "Imprimir" 
+
+msgctxt "report:tmi.report:"
+msgid "Conference"
+msgstr "Conferencia General"
+
+msgctxt "report:tmi.report:"
+msgid "Division"
+msgstr "División"
+
+msgctxt "report:tmi.report:"
+msgid "Union"
+msgstr "Unión"
+
+msgctxt "report:tmi.report:"
+msgid "Field"
+msgstr "Campo"
+
+msgctxt "report:tmi.report:"
+msgid "Zone"
+msgstr "Zona"
+
+msgctxt "report:tmi.report:"
+msgid "District"
+msgstr "Distrito"
+
+msgctxt "report:tmi.report:"
+msgid "Church"
+msgstr "Iglesia"
+
+msgctxt "report:tmi.report:"
+msgid "Small Group"
+msgstr "Grupo Pequeño"

@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form col="4">
+    <label name="company"/>
+    <field name="company" colspan="3" readonly="1"/>
+    <newline/>
+    <label name="start_date"/>
+    <field name="start_date"/>
+    <label name="end_date"/>
+    <field name="end_date"/>
+    <newline/>
+    <label name="group"/>
+    <field name="group" colspan="3"/>
+    <label name="type"/>
+    <field name="type"/>
+    <label name="child_type" invisible="1"/>
+    <field name="child_type" invisible="1"/>
+    <label name="posted"/>
+    <field name="posted"/>
+</form>

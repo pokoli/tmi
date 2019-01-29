@@ -1,0 +1,5 @@
+<calendar dtstart="fecha_inicio">
+	<field name="iglesia"/>
+    <field name="pastor"/>
+    <field name="total"/>
+</calendar>

@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form col="2">
+
+	<group col="6" colspan="2" id="encabezado">
+		<label name="iglesia"/>
+		<field name="iglesia"/>
+		<label name="semana"/>
+		<field name="semana"/>
+		<label name="pastor"/>
+		<field name="pastor" widget="selection"/>
+		<label name="mes"/>
+		<field name="mes" readonly="1"/>
+		<label name="fecha_inicio"/>
+		<field name="fecha_inicio" readonly="1"/>
+		<label name="fecha_fin"/>
+		<field name="fecha_fin" readonly="1"/>
+	</group>
+	<group col="2" colspan="2" id="lineas">
+		<field name="lineas" view_ids="discipulado.reporte_bautizo_tree" colspan="3" yfill="1"/>
+		<label name="total"/>
+		<field name="total"/>
+	</group>
+	<group col="2" colspan="2" id="notas">
+		<label name="notas"/>
+		<field name="notas"/>
+	</group>
+	<group col="2" colspan="2" id="datos">
+		<label name="distrito"/>
+		<field name="distrito" />
+		<label name="zona"/>
+		<field name="zona"/>
+		<label name="campo"/>
+		<field name="campo"/>
+		<label name="union"/>
+		<field name="union"/>
+	</group>
+	
+</form>

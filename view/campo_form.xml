@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!-- This file is part sale_pos module for Tryton.
+The COPYRIGHT file at the top level of this repository contains the full copyright notices and license terms. -->
+<form col="2">
+	<group col="6" colspan="2" id="generales">
+	    <label name="name"/>
+	    <field name="name"/>
+	    <label name="union"/>
+	    <field name="union" widget="selection"/>
+	    <label name="pastor"/>
+	    <field name="pastor" widget="selection"/>
+	</group>
+	<group col="1" colspan="2" id="detalles">
+    	<field name="zonas"/>
+    </group>
+</form>

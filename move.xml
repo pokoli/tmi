@@ -1,0 +1,306 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <menuitem name="Entries" parent="menu_tmi"
+            id="menu_entries" sequence="30"/>
+
+        <record model="ir.ui.view" id="move_view_form">
+            <field name="model">tmi.move</field>
+            <field name="type">form</field>
+            <field name="name">move_form</field>
+        </record>
+        <record model="ir.ui.view" id="move_view_tree">
+            <field name="model">tmi.move</field>
+            <field name="type">tree</field>
+            <field name="name">move_tree</field>
+        </record>
+        <record model="ir.action.act_window" id="act_move_tree">
+            <field name="name">TMI Moves Reports</field>
+            <field name="res_model">tmi.move</field>
+        </record>
+
+        <record model="ir.action.act_window.domain" id="act_move_domain_draft">
+            <field name="name">Draft</field>
+            <field name="sequence" eval="10"/>
+            <field name="domain" eval="[('state', '=', 'draft')]" pyson="1"/>
+            <field name="count" eval="True"/>
+            <field name="act_window" ref="act_move_tree"/>
+        </record>
+        <record model="ir.action.act_window.domain" id="act_move_domain_validated">
+            <field name="name">Quotation</field>
+            <field name="sequence" eval="20"/>
+            <field name="domain" eval="[('state', '=', 'quotation')]" pyson="1"/>
+            <field name="count" eval="True"/>
+            <field name="act_window" ref="act_move_tree"/>
+        </record>
+        <record model="ir.action.act_window.domain" id="act_move_domain_posted">
+            <field name="name">Posted</field>
+            <field name="sequence" eval="30"/>
+            <field name="domain" eval="[('state', '=', 'posted')]" pyson="1"/>
+            <field name="count" eval="True"/>
+            <field name="act_window" ref="act_move_tree"/>
+        </record>
+        <record model="ir.action.act_window.domain" id="act_move_domain_all">
+            <field name="name">All</field>
+            <field name="sequence" eval="9999"/>
+            <field name="domain"></field>
+            <field name="act_window" ref="act_move_tree"/>
+        </record>
+
+        <record model="ir.action.act_window.view" id="act_move_tree_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="move_view_tree"/>
+            <field name="act_window" ref="act_move_tree"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_move_tree_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="move_view_form"/>
+            <field name="act_window" ref="act_move_tree"/>
+        </record>
+        <menuitem parent="menu_entries" action="act_move_tree"
+            id="menu_move_tree"/>
+
+
+        <record model="ir.ui.view" id="baptism_move_view_form">
+            <field name="model">tmi.move</field>
+            <field name="type">form</field>
+            <field name="name">baptism_move_form</field>
+        </record>
+        <record model="ir.ui.view" id="baptism_move_view_tree">
+            <field name="model">tmi.move</field>
+            <field name="type">tree</field>
+            <field name="name">baptism_move_tree</field>
+        </record>
+        <record model="ir.action.act_window" id="act_baptism_move_tree">
+            <field name="name">Baptism Reports</field>
+            <field name="res_model">tmi.move</field>
+        </record>
+
+        <record model="ir.action.act_window.domain" id="act_baptism_move_domain_draft">
+            <field name="name">Draft</field>
+            <field name="sequence" eval="10"/>
+            <field name="domain" eval="[('state', '=', 'draft')]" pyson="1"/>
+            <field name="count" eval="True"/>
+            <field name="act_window" ref="act_baptism_move_tree"/>
+        </record>
+        <record model="ir.action.act_window.domain" id="act_baptism_move_domain_validated">
+            <field name="name">Quotation</field>
+            <field name="sequence" eval="20"/>
+            <field name="domain" eval="[('state', '=', 'quotation')]" pyson="1"/>
+            <field name="count" eval="True"/>
+            <field name="act_window" ref="act_baptism_move_tree"/>
+        </record>
+        <record model="ir.action.act_window.domain" id="act_baptism_move_domain_posted">
+            <field name="name">Posted</field>
+            <field name="sequence" eval="30"/>
+            <field name="domain" eval="[('state', '=', 'posted')]" pyson="1"/>
+            <field name="count" eval="True"/>
+            <field name="act_window" ref="act_baptism_move_tree"/>
+        </record>
+        <record model="ir.action.act_window.domain" id="act_baptism_move_domain_all">
+            <field name="name">All</field>
+            <field name="sequence" eval="9999"/>
+            <field name="domain"></field>
+            <field name="act_window" ref="act_baptism_move_tree"/>
+        </record>
+
+        <record model="ir.action.act_window.view" id="act_baptism_move_tree_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="baptism_move_view_tree"/>
+            <field name="act_window" ref="act_baptism_move_tree"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_baptism_move_tree_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="baptism_move_view_form"/>
+            <field name="act_window" ref="act_baptism_move_tree"/>
+        </record>
+        <menuitem parent="menu_entries" action="act_baptism_move_tree"
+            id="menu_baptism_move_tree"/>
+
+        <record model="ir.model.access" id="access_move">
+            <field name="model" search="[('model', '=', 'tmi.move')]"/>
+            <field name="perm_read" eval="False"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_tmi_move">
+            <field name="model" search="[('model', '=', 'tmi.move')]"/>
+            <field name="group" ref="tmi_group"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_tmi_move_admin">
+            <field name="model" search="[('model', '=', 'tmi.move')]"/>
+            <field name="group" ref="tmi_group_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+        
+        <record model="ir.ui.view" id="move_line_view_form">
+            <field name="model">tmi.move.line</field>
+            <field name="type">form</field>
+            <field name="priority" eval="10"/>
+            <field name="name">move_line_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="move_line_view_form_move">
+            <field name="model">tmi.move.line</field>
+            <field name="type">form</field>
+            <field name="priority" eval="20"/>
+            <field name="name">move_line_form_move</field>
+        </record>
+
+        <record model="ir.ui.view" id="move_line_view_tree">
+            <field name="model">tmi.move.line</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="10"/>
+            <field name="name">move_line_tree</field>
+        </record>
+
+        <record model="ir.ui.view" id="move_line_view_tree_move">
+            <field name="model">tmi.move.line</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="20"/>
+            <field name="name">move_line_tree_move</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_move_line_form">
+            <field name="name">TMI Move Lines</field>
+            <field name="res_model">account.move.line</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_move_line_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="move_line_view_tree"/>
+            <field name="act_window" ref="act_move_line_form"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_move_line_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="move_line_view_form"/>
+            <field name="act_window" ref="act_move_line_form"/>
+        </record>
+
+        <record model="ir.ui.view" id="baptism_move_line_view_form_move">
+            <field name="model">tmi.move.line</field>
+            <field name="type">form</field>
+            <field name="priority" eval="10"/>
+            <field name="name">baptism_move_line_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="baptism_move_line_tree_view">
+            <field name="model">tmi.move.line</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="10"/>
+            <field name="name">baptism_move_line_tree</field>
+        </record>
+
+        <record model="ir.model.button" id="tmi_cancel_button">
+            <field name="name">cancel</field>
+            <field name="string">Cancel</field>
+            <field name="confirm">Are you sure to cancel the invoice?</field>
+            <field name="help">Cancel the invoice</field>
+            <field name="model" search="[('model', '=', 'tmi.move')]"/>
+        </record> 
+        <record model="ir.model.button-res.group"
+            id="tmi_cancel_button_group_tmi">
+            <field name="button" ref="tmi_cancel_button"/>
+            <field name="group" ref="tmi_group"/>
+        </record>
+        <record model="ir.model.button" id="tmi_draft_button">
+            <field name="name">draft</field>
+            <field name="string">Draft</field>
+            <field name="model" search="[('model', '=', 'tmi.move')]"/>
+        </record>
+        <record model="ir.model.button-res.group"
+            id="tmi_draft_button_group_tmi">
+            <field name="button" ref="tmi_draft_button"/>
+            <field name="group" ref="tmi_group"/>
+        </record>
+        <record model="ir.model.button" id="tmi_quote_button">
+            <field name="name">quote</field>
+            <field name="string">Quote</field>
+            <field name="model" search="[('model', '=', 'tmi.move')]"/>
+        </record>
+        <record model="ir.model.button-res.group"
+            id="tmi_quote_button_group_tmi">
+            <field name="button" ref="tmi_quote_button"/>
+            <field name="group" ref="tmi_group"/>
+        </record>
+        <record model="ir.model.button" id="tmi_post_button">
+            <field name="name">post</field>
+            <field name="string">Post</field>
+            <field name="model" search="[('model', '=', 'tmi.move')]"/>
+        </record>
+        <record model="ir.model.button-res.group"
+            id="tmi_post_button_group_tmi">
+            <field name="button" ref="tmi_post_button"/>
+            <field name="group" ref="tmi_group"/>
+        </record>
+
+        <!-- TODO keyword general ledger -->
+        <!--
+        <record model="ir.ui.view" id="print_general_journal_start_view_form">
+            <field name="model">account.move.print_general_journal.start</field>
+            <field name="type">form</field>
+            <field name="name">print_general_journal_start_form</field>
+        </record>
+
+        <record model="ir.action.wizard" id="wizard_print_general_journal">
+            <field name="name">Print General Journal</field>
+            <field name="wiz_name">account.move.print_general_journal</field>
+        </record>
+        <menuitem parent="menu_reporting" action="wizard_print_general_journal"
+            id="menu_print_general_journal" icon="tryton-print"/>
+
+        <record model="ir.action.report" id="report_general_journal">
+            <field name="name">General Journal</field>
+            <field name="model">account.move</field>
+            <field name="report_name">account.move.general_journal</field>
+            <field name="report">account/general_journal.fodt</field>
+        </record>-->
+
+        <record model="ir.ui.view" id="tmi_move_quote_default_view_form">
+            <field name="model">tmi.move.quote.default</field>
+            <field name="type">form</field>
+            <field name="name">tmi_move_quote_default_form</field>
+        </record>
+        <record model="ir.action.wizard" id="act_quote_tmi_move">
+            <field name="name">Move to Draft</field>
+            <field name="wiz_name">tmi.move.quote</field>
+        </record>
+        <record model="ir.action.keyword" id="act_quote_tmi_move_keyword1">
+            <field name="keyword">form_action</field>
+            <field name="model">tmi.move,-1</field>
+            <field name="action" ref="act_quote_tmi_move"/>
+        </record>
+        
+        <record model="ir.action-res.group"
+            id="act_quote_tmi_move-group_tmi_admin">
+            <field name="action" ref="act_quote_tmi_move"/>
+            <field name="group" ref="tmi_group"/>
+        </record> 
+        <record model="ir.action-res.group"
+            id="act_quote_tmi_move_keyword-group_tmi_admin">
+            <field name="action" ref="act_quote_tmi_move_keyword1"/>
+            <field name="group" ref="tmi_group"/>
+        </record>
+
+        <record model="ir.rule.group" id="rule_group_tmi_move">
+            <field name="model" search="[('model', '=', 'tmi.move')]"/>
+            <field name="global_p" eval="True"/>
+        </record>
+        <record model="ir.rule" id="rule_tmi_move1">
+            <field name="domain"
+                eval="[('company', 'in', Eval('user', {}).get('companies', []))]"
+                pyson="1"/>
+            <field name="rule_group" ref="rule_group_tmi_move"/>
+        </record>
+
+    </data>
+</tryton>

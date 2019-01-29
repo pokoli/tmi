@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <menuitem name="Printing" parent="menu_tmi"
+            id="menu_printing" sequence="60"/>
+
+        <record model="ir.ui.view" id="print_tmi_report_start_form">
+            <field name="model">print.tmi.report.start</field>
+            <field name="type">form</field>
+            <field name="name">print_tmi_report_start</field>
+        </record>
+        <record model="ir.action.report" id="report_tmi">
+            <field name="name">Tmi Report</field>
+            <field name="model">tmi.meta.group</field>
+            <field name="report_name">tmi.report</field>
+            <field name="report">tmi/report.fodt</field>
+        </record>
+        <record model="ir.action.wizard" id="wizard_print_tmi_report">
+            <field name="name">Print Report</field>
+            <field name="wiz_name">print.tmi.report</field>
+        </record>
+        <menuitem parent="tmi.menu_printing" action="wizard_print_tmi_report"
+            id="menu_print_tmi_report" icon="tryton-print" sequence="10"/>
+        
+    </data>
+</tryton>

@@ -1,0 +1,11 @@
+<data>
+    <xpath expr="/form/label[@name='active']" position="before">
+        <label name="party"/>
+        <field name="party"/>
+    </xpath>
+	<xpath expr="/form/field[@name='active']" position="after">
+    	<field name="iglesias" xexpand="1" yexpand="1"
+        	yfill="1" xfill="1" colspan="4"/>
+    </xpath>
+    
+</data>

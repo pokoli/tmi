@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form>
+    <label name="group"/>
+    <field name="group"/>
+    <label name="move"/>
+    <field name="move"/>
+    <label name="baptism"/>
+    <field name="baptism"/>
+    <label name="tithe"/>
+    <field name="tithe"/>
+    <label name="offering"/>
+    <field name="offering"/>
+    <label name="church_planting"/>
+    <field name="church_planting"/>
+    <label name="small_group"/>
+    <field name="small_group"/>
+    <label name="organizing_church"/>
+    <field name="organizing_church"/>
+    <label name="praise_thanksgiving"/>
+    <field name="praise_thanksgiving"/>
+    <label name="description"/>
+    <field name="description"/>
+    <notebook colspan="4">
+        <page string="Other Info" id="info">
+            <label name="date"/>
+            <field name="date"/>
+        </page>
+    </notebook>
+    <label name="state"/>
+    <field name="state"/>
+</form>

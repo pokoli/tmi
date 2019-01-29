@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tree>
+    <field name="company"/>
+    <field name="group"/>
+    <field name="period"/>
+    <field name="post_date"/>
+    <field name="description"/>
+    <button name="post" tree_invisible="1"/>
+</tree>

@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form cursor="tmi_baptism_target">
+    <separator id="sequence" string="Sequences" colspan="4"/>
+    <label name="tmi_move_sequence"/>
+    <field name="tmi_move_sequence"/>
+    <separator id="target" string="Group Targets" colspan="4"/>
+    <label name="tmi_baptism_target"/>
+    <field name="tmi_baptism_target"/>
+    <label name="tmi_small_group_target"/>
+    <field name="tmi_small_group_target"/>
+    <label name="tmi_tithe_target"/>
+    <field name="tmi_tithe_target"/>
+    <label name="tmi_offering_target"/>
+    <field name="tmi_offering_target"/>
+    <label name="tmi_praise_thanksgiving_target"/>
+    <field name="tmi_praise_thanksgiving_target"/>
+    <label name="tmi_gathering_target"/>
+    <field name="tmi_gathering_target"/>
+    <label name="tmi_church_planting_target"/>
+    <field name="tmi_church_planting_target"/>
+    <label name="tmi_organizing_church_target"/>
+    <field name="tmi_organizing_church_target"/>
+</form>

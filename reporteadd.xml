@@ -1,0 +1,76 @@
+<?xml version="1.0"?>
+<!-- This file is part sale_pos module for Tryton.
+The COPYRIGHT file at the top level of this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <!-- Imprimir Informe Lider Destacado -->
+
+        <record model="ir.ui.view" id="imprimir_reporte_lider_destacado_inicio_form">
+            <field name="model">disc.reporte.lider.destacado.imprimir.inicio</field>
+            <field name="type">form</field>
+            <field name="name">imprimir_reporte_lider_destacado_inicio_form</field>
+        </record>
+
+        <record model="ir.action.wizard" id="wizard_imprimir_reporte_lider_destacado">
+            <field name="name">Lider Destacado</field>
+            <field name="wiz_name">disc.reporte.lider.destacado.imprimir</field>
+        </record>
+
+        <menuitem parent="menu_impresos_discipulado" action="wizard_imprimir_reporte_lider_destacado"
+            id="menu_imprimir_reporte_lider_destacado" icon="tryton-print"/>
+            
+        <record model="ir.action.report" id="imprimir_reporte_lider_destacado">
+            <field name="name">Lider Destacado</field>
+            <field name="model">disc.reporte</field>
+            <field name="report_name">disc.reporte.lider.destacado</field>
+            <field name="report">discipulado/reporte_lider.fodt</field>
+        </record>
+
+        <!-- Imprimir Informe Lider Cero -->
+
+        <record model="ir.ui.view" id="imprimir_reporte_lider_cero_inicio_form">
+            <field name="model">disc.reporte.lider.cero.imprimir.inicio</field>
+            <field name="type">form</field>
+            <field name="name">imprimir_reporte_lider_cero_inicio_form</field>
+        </record>
+
+        <record model="ir.action.wizard" id="wizard_imprimir_reporte_lider_cero">
+            <field name="name">Lider Cero</field>
+            <field name="wiz_name">disc.reporte.lider.cero.imprimir</field>
+        </record>
+
+        <menuitem parent="menu_impresos_discipulado" action="wizard_imprimir_reporte_lider_cero"
+            id="menu_imprimir_reporte_lider_cero" icon="tryton-print"/>
+            
+        <record model="ir.action.report" id="imprimir_reporte_lider_cero">
+            <field name="name">Lider Cero</field>
+            <field name="model">disc.reporte</field>
+            <field name="report_name">disc.reporte.lider.cero</field>
+            <field name="report">discipulado/reporte_lider_cero.fodt</field>
+        </record>
+
+        <!-- Imprimir Informe Lider Distrito -->
+
+        <record model="ir.ui.view" id="imprimir_reporte_lider_distrito_inicio_form">
+            <field name="model">disc.reporte.lider.distrito.imprimir.inicio</field>
+            <field name="type">form</field>
+            <field name="name">imprimir_reporte_lider_distrito_inicio_form</field>
+        </record>
+
+        <record model="ir.action.wizard" id="wizard_imprimir_reporte_lider_distrito">
+            <field name="name">Lideres por Distrito</field>
+            <field name="wiz_name">disc.reporte.lider.distrito.imprimir</field>
+        </record>
+
+        <menuitem parent="menu_impresos_discipulado" action="wizard_imprimir_reporte_lider_distrito" sequence="3"
+            id="menu_imprimir_reporte_lider_distrito" icon="tryton-print"/>
+            
+        <record model="ir.action.report" id="imprimir_reporte_iglesia_cero">
+            <field name="name">Lideres por Distrito</field>
+            <field name="model">disc.reporte</field>
+            <field name="report_name">disc.reporte.lider.distrito</field>
+            <field name="report">discipulado/reporte_lider_distrito.fodt</field>
+        </record>
+
+    </data>
+</tryton>
