@@ -164,6 +164,31 @@ class TmiMetaGroup(
     tmi_organizing_church_percentage = fields.Function(fields.Numeric('Organizing Church Percentage',
         digits=(16,2)), 'get_percentage')
 
+    church = fields.Function(fields.Many2One('tmi.meta.group', 'Church',
+        domain=[
+            'OR',[ ('company','=',Eval('company',-1)), 
+                ('company', 'in',Eval('company.childs',[])),
+                ],
+            ('type', '=', 'church'),
+
+            ],
+        depends=['type','company']),
+        'get_church', 
+        searcher='search_church',
+    )
+
+    district = fields.Function(fields.Many2One('tmi.meta.group', 'District',
+        domain=[
+            'OR',[ ('company','=',Eval('company',-1)), 
+                ('company', 'in',Eval('company.childs',[])),
+                ],
+            ('type', '=', 'district'),
+
+            ],
+        depends=['type','company']),
+        'get_district',
+        searcher='search_district',
+    )
 
     level = fields.Function(fields.Numeric('Level',digits=(2,0)),
         '_get_level')
@@ -216,6 +241,32 @@ class TmiMetaGroup(
                 res.append(Group(child.id))
                 child._get_childs_by_order(res=res)
         return res 
+
+    @fields.depends('type')
+    def get_church(self, name=None): 
+        if self.type == 'small_group' and self.parent: 
+            return self.parent.id
+        return None 
+    
+    @fields.depends('type')
+    def get_district(self, name=None): 
+        if self.type == 'small_group' and self.parent:
+            if self.parent.parent: 
+                return self.parent.parent.id
+        if self.type == 'church' and self.parent: 
+            return self.parent.id 
+        return None 
+    
+
+    @classmethod
+    def search_church(cls, name, clause):
+        return [('parent.name' + clause[0].lstrip(name),)
+            + tuple(clause[1:])]
+
+    @classmethod
+    def search_district(cls, name, clause):
+        return [('parent.name' + clause[0].lstrip(name),)
+            + tuple(clause[1:])]
 
     @fields.depends('type','parent_type')
     def on_change_type(self):

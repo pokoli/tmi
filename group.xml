@@ -292,6 +292,12 @@ this repository contains the full copyright notices and license terms. -->
             <field name="type">graph</field>
             <field name="name">tmi_balance_graph</field>
         </record>
+        <record model="ir.ui.view" id="tmi_balance_view_list">
+            <field name="model">tmi.meta.group</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="10"/>
+            <field name="name">tmi_balance_list</field>
+        </record>
 
         <record model="ir.action.act_window" id="act_tmi_field_baptism_balance_tree_view">
             <field name="name">Field Baptisms</field>
@@ -371,6 +377,22 @@ this repository contains the full copyright notices and license terms. -->
         </record>
         <menuitem parent="menu_reporting" action="act_tmi_church_baptism_balance_tree_view"
             id="menu_open_church_baptism_balance" sequence="40"/>
+
+        <record model="ir.action.act_window" id="act_tmi_church_baptism_balance_list_view">
+            <field name="name">Church Baptisms List</field>
+            <field name="res_model">tmi.meta.group</field>
+            <field name="context_model">tmi.statistical.context</field>
+            <field name="domain"
+                eval="[('type', '=', 'small_group')]"
+                pyson="1"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_tmi_church_baptism_balance_list_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="tmi_balance_view_list"/>
+            <field name="act_window" ref="act_tmi_church_baptism_balance_list_view"/>
+        </record>
+        <menuitem parent="menu_open_church_baptism_balance" action="act_tmi_church_baptism_balance_list_view"
+            id="menu_open_church_baptism_balance_list" sequence="10"/>
 
         <!--
         <record model="ir.ui.view" id="balance_sheet_context_view_form">
