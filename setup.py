@@ -6,7 +6,7 @@ import re
 import os
 import ConfigParser
  
-MODULE = 'discipulado'
+MODULE = 'tmi'
 PREFIX = 'trytond'
 MODULE2PREFIX = {}
 
@@ -38,7 +38,7 @@ minor_version = int(minor_version)
 
 requires = []
 for dep in info.get('depends', []):
-    if not re.match(r'(ir|res|webdav)(\W|$)', dep):
+    if not re.match(r'(ir|res)(\W|$)', dep):
         prefix = MODULE2PREFIX.get(dep, 'trytond')
         requires.append('%s_%s >= %s.%s, < %s.%s' %
                 (prefix, dep, major_version, minor_version,
@@ -51,9 +51,9 @@ setup(name='%s_%s' % (PREFIX, MODULE),
     version=version,
     description='',
     long_description=read('README'),
-    author='NaN·tic',
-    author_email='info@nan-tic.com',
-    url='http://www.nan-tic.com/',
+    author='iehoshia',
+    author_email='jepgez@gmail.com',
+    url='http://www.apixela.net/',
     download_url="https://bitbucket.org/nantic/trytond-%s" % MODULE,
     package_dir={'trytond.modules.%s' % MODULE: '.'},
     packages=[
@@ -69,7 +69,7 @@ setup(name='%s_%s' % (PREFIX, MODULE),
         'Environment :: Plugins',
         'Framework :: Tryton',
         'Intended Audience :: Developers',
-        'Intended Audience :: Financial and Insurance Industry',
+        'Intended Audience :: Sevent Day Adventist Church',
         'Intended Audience :: Legal Industry',
         'License :: OSI Approved :: GNU General Public License (GPL)',
         'Natural Language :: Bulgarian',
@@ -82,8 +82,7 @@ setup(name='%s_%s' % (PREFIX, MODULE),
         'Natural Language :: Russian',
         'Natural Language :: Spanish',
         'Operating System :: OS Independent',
-        'Programming Language :: Python :: 2.6',
-        'Programming Language :: Python :: 2.7',
+        'Programming Language :: Python :: 3.4',
         'Topic :: Office/Business',
         ],
     license='GPL-3',

@@ -274,6 +274,14 @@ msgctxt "field:tmi.meta.group,parent_type:"
 msgid "Parent Type"
 msgstr "Tipo de Superior"
 
+msgctxt "field:tmi.meta.group,church:"
+msgid "Church"
+msgstr "Iglesia"
+
+msgctxt "field:tmi.meta.group,district:"
+msgid "District"
+msgstr "Distrito"
+
 msgctxt "selection:tmi.meta.group,parent_type:"
 msgid "Conference"
 msgstr "Conferencia"
@@ -917,6 +925,14 @@ msgstr "Por Iglesia"
 msgctxt "model:ir.ui.menu,name:menu_open_church_baptism_balance"
 msgid "Church Baptisms"
 msgstr "Por Iglesia"
+
+msgctxt "model:ir.action,name:act_tmi_church_baptism_balance_list_view"
+msgid "Church Baptisms List"
+msgstr "Lista de Líderes"
+
+msgctxt "model:ir.ui.menu,name:menu_open_church_baptism_balance_list"
+msgid "Church Baptisms List"
+msgstr "Lista de Líderes"
 
 msgctxt "field:tmi.statistical.context,year:"
 msgid "Year"
