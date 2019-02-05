@@ -35,7 +35,7 @@ __all__ = [
 def diff_month(d1, d2):
     return (d1.year - d2.year) * 12 + d1.month - d2.month
 
-class TmiMetaGroup( 
+class TmiMetaGroup(
         tree(separator='\\'), sequence_ordered(), ModelSQL, ModelView):
     'Meta Group'
     __name__ = 'tmi.meta.group'
@@ -51,7 +51,7 @@ class TmiMetaGroup(
     parent = fields.Many2One('tmi.meta.group', 'Parent',
         ondelete="RESTRICT",
         domain=[
-            'OR',[ ('company','=',Eval('company',-1)), 
+            'OR',[ ('company','=',Eval('company',-1)),
                 ('company', 'in',Eval('company.childs',[])),
                 ],
             ('type', '=', Eval('parent_type',None)),
@@ -73,7 +73,7 @@ class TmiMetaGroup(
         digits=(16,Eval('currency_digits',2))), 'get_balance')
     offering = fields.Function(fields.Numeric('Offering',
         digits=(16,Eval('currency_digits',2))), 'get_balance')
-    praise_thanksgiving = fields.Function(fields.Numeric('Praise and Thanksgiving', 
+    praise_thanksgiving = fields.Function(fields.Numeric('Praise and Thanksgiving',
         digits=(16,Eval('currency_digits',2))), 'get_balance')
     gathering = fields.Function(fields.Numeric('Gathering',
         digits=(16,Eval('currency_digits',2))), 'get_balance')
@@ -81,7 +81,7 @@ class TmiMetaGroup(
         digits=(16,Eval('currency_digits',2))), 'get_balance')
     organizing_church = fields.Function(fields.Numeric('Organizing Church',
         digits=(16,Eval('currency_digits',2))), 'get_balance')
-    type = fields.Selection( 
+    type = fields.Selection(
         [
         ('conference','Conference'),
         ('division','Division'),
@@ -92,7 +92,7 @@ class TmiMetaGroup(
         ('church','Church'),
         ('small_group','Small Group'),
         ]
-        ,'Type', 
+        ,'Type',
         required=True,
         sort=False)
     parent_type = fields.Function(fields.Selection(
@@ -121,7 +121,7 @@ class TmiMetaGroup(
         digits=(16,Eval('currency_digits',2))), 'get_target')
     tmi_offering_target = fields.Function(fields.Numeric('Offering Target',
         digits=(16,Eval('currency_digits',2))), 'get_target')
-    tmi_praise_thanksgiving_target = fields.Function(fields.Numeric('Praise and Thanksgiving Target', 
+    tmi_praise_thanksgiving_target = fields.Function(fields.Numeric('Praise and Thanksgiving Target',
         digits=(16,Eval('currency_digits',2))), 'get_target')
     tmi_gathering_target = fields.Function(fields.Numeric('Gathering Target',
         digits=(16,Eval('currency_digits',2))), 'get_target')
@@ -138,7 +138,7 @@ class TmiMetaGroup(
         digits=(16,Eval('currency_digits',2))), 'get_difference')
     tmi_offering_difference = fields.Function(fields.Numeric('Offering Difference',
         digits=(16,Eval('currency_digits',2))), 'get_difference')
-    tmi_praise_thanksgiving_difference = fields.Function(fields.Numeric('Praise and Thanksgiving Difference', 
+    tmi_praise_thanksgiving_difference = fields.Function(fields.Numeric('Praise and Thanksgiving Difference',
         digits=(16,Eval('currency_digits',2))), 'get_difference')
     tmi_gathering_difference = fields.Function(fields.Numeric('Gathering Difference',
         digits=(16,Eval('currency_digits',2))), 'get_difference')
@@ -155,7 +155,7 @@ class TmiMetaGroup(
         digits=(16,2)), 'get_percentage')
     tmi_offering_percentage = fields.Function(fields.Numeric('Offering Percentage',
         digits=(16,2)), 'get_percentage')
-    tmi_praise_thanksgiving_percentage = fields.Function(fields.Numeric('Praise and Thanksgiving Percentage', 
+    tmi_praise_thanksgiving_percentage = fields.Function(fields.Numeric('Praise and Thanksgiving Percentage',
         digits=(16,2)), 'get_percentage')
     tmi_gathering_percentage = fields.Function(fields.Numeric('Gathering Percentage',
         digits=(16,2)), 'get_percentage')
@@ -166,20 +166,20 @@ class TmiMetaGroup(
 
     church = fields.Function(fields.Many2One('tmi.meta.group', 'Church',
         domain=[
-            'OR',[ ('company','=',Eval('company',-1)), 
+            'OR',[ ('company','=',Eval('company',-1)),
                 ('company', 'in',Eval('company.childs',[])),
                 ],
             ('type', '=', 'church'),
 
             ],
         depends=['type','company']),
-        'get_church', 
+        'get_church',
         searcher='search_church',
     )
 
     district = fields.Function(fields.Many2One('tmi.meta.group', 'District',
         domain=[
-            'OR',[ ('company','=',Eval('company',-1)), 
+            'OR',[ ('company','=',Eval('company',-1)),
                 ('company', 'in',Eval('company.childs',[])),
                 ],
             ('type', '=', 'district'),
@@ -196,12 +196,12 @@ class TmiMetaGroup(
     @classmethod
     def __setup__(cls):
         super(TmiMetaGroup, cls).__setup__()
-        #cls._order.insert(0, ('baptism', 'ASC')) 
+        #cls._order.insert(0, ('baptism', 'ASC'))
         cls._order.insert(0, ('name', 'ASC'))
         cls._order.insert(0, ('code', 'ASC'))
 
     def get_parent_type(self, name):
-        if self.type=='small_group': 
+        if self.type=='small_group':
             return 'church'
         if self.type=='church':
             return 'district'
@@ -217,7 +217,7 @@ class TmiMetaGroup(
             return 'conference'
         return None
 
-    def _get_level(self, parent=None): 
+    def _get_level(self, parent=None):
         level = 0
         if self.parent:
             level = self.parent.level + 1
@@ -225,38 +225,38 @@ class TmiMetaGroup(
 
     def _get_childs_by_order(self, res=None, _order=None):
         '''Returns the records of all the children computed recursively, and sorted by sequence. Ready for the printing'''
-        
+
         Group = Pool().get('tmi.meta.group')
-        
-        if res is None: 
+
+        if res is None:
             res = []
 
-        if _order is None: 
+        if _order is None:
             _order = 'baptism'
 
         childs = Group.search([('parent', '=', self.id)])
-        
+
         if len(childs)>=1:
             for child in childs:
                 res.append(Group(child.id))
                 child._get_childs_by_order(res=res)
-        return res 
+        return res
 
     @fields.depends('type')
-    def get_church(self, name=None): 
-        if self.type == 'small_group' and self.parent: 
-            return self.parent.id
-        return None 
-    
-    @fields.depends('type')
-    def get_district(self, name=None): 
+    def get_church(self, name=None):
         if self.type == 'small_group' and self.parent:
-            if self.parent.parent: 
+            return self.parent.id
+        return None
+
+    @fields.depends('type')
+    def get_district(self, name=None):
+        if self.type == 'small_group' and self.parent:
+            if self.parent.parent:
                 return self.parent.parent.id
-        if self.type == 'church' and self.parent: 
-            return self.parent.id 
-        return None 
-    
+        if self.type == 'church' and self.parent:
+            return self.parent.id
+        return None
+
 
     @classmethod
     def search_church(cls, name, clause):
@@ -286,8 +286,8 @@ class TmiMetaGroup(
             self.parent_type = 'conference'
         return None
 
-    def get_type(self,value=None): 
-        if value=='small_group': 
+    def get_type(self,value=None):
+        if value=='small_group':
             return 'Small Group'
         if value=='church':
             return 'Church'
@@ -331,20 +331,20 @@ class TmiMetaGroup(
     def get_currency(self, name):
         return self.company.currency.id
 
-    def get_currency_digits(self, name): 
+    def get_currency_digits(self, name):
         return self.company.currency.digits
 
-    def get_child_value(self, name): 
-        if self.childs is not None and self.type !='small_group': 
+    def get_child_value(self, name):
+        if self.childs is not None and self.type !='small_group':
             return sum(x.child_value for x in self.childs)
-        elif self.childs is None and self.type =='small_group': 
-            return 1 
-        else: 
+        elif self.childs is None and self.type =='small_group':
+            return 1
+        else:
             children_sum = 1
             for child in self.childs:
                 children_sum = sum(x.child_value for x in self.childs if x.type=='small_group')
-            return children_sum 
-        return 0 
+            return children_sum
+        return 0
 
     @staticmethod
     def default_company():
@@ -352,7 +352,7 @@ class TmiMetaGroup(
 
     @staticmethod
     def default_active():
-        return True 
+        return True
 
     @staticmethod
     def default_type():
@@ -383,7 +383,7 @@ class TmiMetaGroup(
             groups = Group.search([
                     ('meta', 'in', [m.id for m in childs]),
                     ])
-        
+
         for group in groups:
             meta_sum[group.meta.id] += (group.baptism)
 
@@ -451,69 +451,69 @@ class TmiMetaGroup(
         Configuration = pool.get('tmi.configuration')
         config = Configuration(1)
         target = config.get_multivalue('tmi_baptism_target')
-        context = Transaction().context 
+        context = Transaction().context
         start_date = context.get('start_date')
         end_date = context.get('end_date')
-        value = self.child_value 
-        if start_date and end_date: 
+        value = self.child_value
+        if start_date and end_date:
             months = diff_month(end_date, start_date)
             value = value * months
         total = 0
         if target and value:
-            total = target * value 
-        return total 
+            total = target * value
+        return total
 
     def get_target(self, name):
         pool = Pool()
         Configuration = pool.get('tmi.configuration')
         if name not in {'tmi_baptism_target','tmi_tithe_target','tmi_offering_target','tmi_church_planting_target',
                 'tmi_gathering_target','tmi_small_group_target','tmi_organizing_church_target',
-                'tmi_praise_thanksgiving_target'}: 
+                'tmi_praise_thanksgiving_target'}:
             raise ValueError('Unknown name: %s' % name)
         config = Configuration(1)
         field = str(name)
         target = config.get_multivalue(field)
-        context = Transaction().context 
+        context = Transaction().context
         start_date = context.get('start_date')
         end_date = context.get('end_date')
-        value = self.child_value 
-        if start_date and end_date: 
+        value = self.child_value
+        if start_date and end_date:
             months = diff_month(end_date, start_date)
             value = value * months
         total = 0
         if target and value:
-            total = target * value 
+            total = target * value
         return total
 
     def get_difference(self, name):
         pool = Pool()
-        
+
         if name not in {'tmi_baptism_difference','tmi_tithe_difference','tmi_offering_difference','tmi_church_planting_difference',
                 'tmi_gathering_difference','tmi_small_group_difference','tmi_organizing_church_difference',
-                'tmi_praise_thanksgiving_difference'}: 
+                'tmi_praise_thanksgiving_difference'}:
             raise ValueError('Unknown name: %s' % name)
-        
+
         field = str(name)
         target_field = field.replace('difference','target')
         base_field = field.replace('tmi_','')
         base_field = base_field.replace('_difference','')
 
-        
+
         target_field_value = getattr(self, target_field,None)
         base_field_value = getattr(self, base_field,None)
 
         difference = target_field_value - base_field_value
-        
+
         return difference
 
     def get_percentage(self, name):
         pool = Pool()
-        
+
         if name not in {'tmi_baptism_percentage','tmi_tithe_percentage','tmi_offering_percentage','tmi_church_planting_percentage',
                 'tmi_gathering_percentage','tmi_small_group_percentage','tmi_organizing_church_percentage',
-                'tmi_praise_thanksgiving_percentage'}: 
+                'tmi_praise_thanksgiving_percentage'}:
             raise ValueError('Unknown name: %s' % name)
-        
+
         field = str(name)
         target_field = field.replace('percentage','target')
         base_field = field.replace('tmi_','')
@@ -522,8 +522,8 @@ class TmiMetaGroup(
         target_field_value = getattr(self, target_field,None)
         base_field_value = getattr(self, base_field,None)
 
-        difference = 0 
-        if target_field_value and target_field_value != 0: 
+        difference = 0
+        if target_field_value and target_field_value != 0:
             difference = base_field_value / target_field_value
             difference = round(difference, 2)
 
@@ -541,7 +541,7 @@ class TmiGroup(ActivePeriodMixin, tree(), ModelView, ModelSQL):
         'get_code', searcher='search_meta_field')
     #active = fields.Boolean('Active')
     meta = fields.Many2One('tmi.meta.group', 'Meta', ondelete="RESTRICT",
-        required=True, 
+        required=True,
         domain=[
             ('company', '=', Eval('company')),
             ('type','in',['church','small_group'])
@@ -557,7 +557,7 @@ class TmiGroup(ActivePeriodMixin, tree(), ModelView, ModelSQL):
     parent = fields.Function(fields.Many2One('tmi.meta.group', 'Parent',
         ondelete="RESTRICT",
         domain=[
-            #'OR',[ ('company','=',Eval('company',-1)), 
+            #'OR',[ ('company','=',Eval('company',-1)),
             #    ('company', 'in',Eval('company.childs',[])),
             #    ],
             ('type','=',Eval('parent_type',-1))
@@ -566,7 +566,7 @@ class TmiGroup(ActivePeriodMixin, tree(), ModelView, ModelSQL):
         'get_parent', searcher='search_meta_field')
     childs = fields.Function(fields.One2Many('tmi.group', 'parent', 'Children',
         domain=[
-            'OR',[ ('company','=',Eval('company',-1)), 
+            'OR',[ ('company','=',Eval('company',-1)),
                 ('company', 'in',Eval('company.childs',[])),
                 ],
             ],
@@ -588,7 +588,7 @@ class TmiGroup(ActivePeriodMixin, tree(), ModelView, ModelSQL):
         digits=(16,Eval('currency_digits',2))), 'get_balance')
     offering = fields.Function(fields.Numeric('Offering',
         digits=(16,Eval('currency_digits',2))), 'get_balance')
-    praise_thanksgiving = fields.Function(fields.Numeric('Praise and Thanksgiving', 
+    praise_thanksgiving = fields.Function(fields.Numeric('Praise and Thanksgiving',
         digits=(16,Eval('currency_digits',2))), 'get_balance')
     gathering = fields.Function(fields.Numeric('Gathering',
         digits=(16,Eval('currency_digits',2))), 'get_balance')
@@ -614,20 +614,20 @@ class TmiGroup(ActivePeriodMixin, tree(), ModelView, ModelSQL):
             return self.name + ' - ' + self.meta.parent.name
 
     def get_name(self, name=None):
-        if self.meta: 
+        if self.meta:
             return self.meta.name
 
     def get_code(self, name=None):
-        if self.meta: 
-            return self.meta.code 
+        if self.meta:
+            return self.meta.code
 
     def get_type(self, name=None):
         if self.meta:
             return self.meta.type
 
     '''
-    def get_type(self, value=None): 
-        if value=='small_group': 
+    def get_type(self, value=None):
+        if value=='small_group':
             return 'Small Group'
         if value=='church':
             return 'Church'
@@ -647,41 +647,41 @@ class TmiGroup(ActivePeriodMixin, tree(), ModelView, ModelSQL):
 
     def get_rec_name(self, name):
         if self.code:
-            return self.get_type(self.type) + ' - ' + self.name + ' - ' + self.code 
+            return self.get_type(self.type) + ' - ' + self.name + ' - ' + self.code
         else:
             return self.get_type(self.type) + ' - ' + self.name
     '''
 
     def get_parent(self, name=None):
         if self.meta:
-            if self.meta.parent: 
+            if self.meta.parent:
                 return self.meta.parent.id
         return None
 
     def get_childs(self, name=None):
-        if self.meta: 
+        if self.meta:
             pool = Pool()
-            Group = pool.get('tmi.group') 
+            Group = pool.get('tmi.group')
             MetaGroup = pool.get('tmi.meta.group')
 
             meta_groups = MetaGroup.search([('id','=',self.meta.id)])
             meta_childs = []
-            if len(meta_groups)==1: 
+            if len(meta_groups)==1:
                 meta_childs = meta_groups[0].childs
             if meta_childs is not []:
                 childs = []
-                for meta in meta_childs: 
+                for meta in meta_childs:
                     groups = Group.search([('meta','=',meta.id)])
-                    if len(groups)==1: 
+                    if len(groups)==1:
                         childs.append(groups[0].id)
-                return childs 
+                return childs
             return []
         else:
             return []
 
     def get_company(self, name=None):
-        if self.meta: 
-            return self.meta.company.id 
+        if self.meta:
+            return self.meta.company.id
 
     @classmethod
     def search_meta_field(cls, name, clause):
@@ -712,27 +712,27 @@ class TmiGroup(ActivePeriodMixin, tree(), ModelView, ModelSQL):
         self.company = Transaction().context.get('company')
         if self.meta:
             pool = Pool()
-            Group = pool.get('tmi.group') 
+            Group = pool.get('tmi.group')
             MetaGroup = pool.get('tmi.meta.group')
-            self.name = self.meta.name 
+            self.name = self.meta.name
             self.code = self.meta.code
             self.type = self.meta.type
             self.parent_type = self.meta.parent_type
-            self.company = self.meta.company 
+            self.company = self.meta.company
             groups = Group.search([('meta','=',self.meta.parent.id)])
             if len(groups)==1:
                 self.parent = groups[0].id
             meta_groups = MetaGroup.search([('id','=',self.meta.id)])
             meta_childs = []
-            if len(meta_groups)==1: 
+            if len(meta_groups)==1:
                 meta_childs = meta_groups[0].childs
             if meta_childs is not []:
                 childs = []
-                for meta in meta_childs: 
+                for meta in meta_childs:
                     groups = Group.search([('meta','=',meta.id)])
-                    if len(groups)==1: 
+                    if len(groups)==1:
                         childs.append(groups[0].id)
-                self.childs = childs 
+                self.childs = childs
 
     def get_currency(self, name):
         return self.company.currency.id
@@ -742,7 +742,7 @@ class TmiGroup(ActivePeriodMixin, tree(), ModelView, ModelSQL):
 
     @fields.depends('company','currency','currency_digits')
     def on_change_company(self, name=None):
-        if self.company: 
+        if self.company:
             self.currency = self.company.currency.id
             self.currency_digits = self.company.currency.digits
 
@@ -783,7 +783,7 @@ class TmiGroup(ActivePeriodMixin, tree(), ModelView, ModelSQL):
 
     @staticmethod
     def default_active():
-        return True 
+        return True
 
     @staticmethod
     def default_type():
@@ -796,7 +796,7 @@ class TmiGroup(ActivePeriodMixin, tree(), ModelView, ModelSQL):
     @classmethod
     def get_group_baptism(cls, groups, names):
         '''
-        Function to compute baptism for TMI Group.        
+        Function to compute baptism for TMI Group.
         '''
         pool = Pool()
         MoveLine = pool.get('tmi.move.line')
@@ -841,8 +841,8 @@ class TmiGroup(ActivePeriodMixin, tree(), ModelView, ModelSQL):
     @classmethod
     def get_balance(cls, groups, names):
         '''
-        Function to compute tithe, baptism, church_planting, gathering, small_group, 
-        organizing_church, praise_thanksgiving, offering for TMI Group.        
+        Function to compute tithe, baptism, church_planting, gathering, small_group,
+        organizing_church, praise_thanksgiving, offering for TMI Group.
         '''
         pool = Pool()
         MoveLine = pool.get('tmi.move.line')
@@ -892,7 +892,7 @@ class TmiGroupStatisticalContext(ModelView):
     __name__ = 'tmi.statistical.context'
 
     year = fields.Many2One('tmi.year', 'Year',
-        required=True) 
+        required=True)
     start_period = fields.Many2One('tmi.period', 'Start Period',
         domain=[
             ('year', '=', Eval('year')),
