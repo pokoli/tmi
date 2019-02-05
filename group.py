@@ -49,7 +49,7 @@ class TmiMetaGroup(
     currency_digits = fields.Function(fields.Integer('Currency Digits'),
             'get_currency_digits')
     parent = fields.Many2One('tmi.meta.group', 'Parent',
-        ondelete="RESTRICT",
+        ondelete="RESTRICT", left="left", right="right",
         domain=[
             'OR',[ ('company','=',Eval('company',-1)),
                 ('company', 'in',Eval('company.childs',[])),
@@ -58,6 +58,8 @@ class TmiMetaGroup(
 
             ],
         depends=['type','company'])
+    left = fields.Integer('Left', required=True, select=True)
+    right = fields.Integer('Right', required=True, select=True)
     childs = fields.One2Many('tmi.meta.group', 'parent', 'Children',
         domain=[
             'OR',[ ('company','=',Eval('company',-1)),
@@ -66,7 +68,8 @@ class TmiMetaGroup(
         ],
         depends=['company'])
     baptism = fields.Function(fields.Numeric('Baptism',
-        digits=(16,Eval('currency_digits',2))), 'get_balance')
+        digits=(16,Eval('currency_digits',2))), 'get_balance',
+        searcher='search_balance')
     small_group = fields.Function(fields.Numeric('Small Group',
         digits=(16,Eval('currency_digits',2))), 'get_balance')
     tithe = fields.Function(fields.Numeric('Tithe',
@@ -199,6 +202,14 @@ class TmiMetaGroup(
         #cls._order.insert(0, ('baptism', 'ASC'))
         cls._order.insert(0, ('name', 'ASC'))
         cls._order.insert(0, ('code', 'ASC'))
+
+    @staticmethod
+    def default_left():
+        return 0
+
+    @staticmethod
+    def default_right():
+        return 0
 
     def get_parent_type(self, name):
         if self.type=='small_group':
@@ -359,92 +370,116 @@ class TmiMetaGroup(
         return 'small_group'
 
     @classmethod
-    def get_baptism(cls, metas, name):
+    def get_balance(cls, metas, names):
         pool = Pool()
+        MoveLine = pool.get('tmi.move.line')
         Group = pool.get('tmi.group')
-        Period = pool.get('tmi.period')
+        cursor = Transaction().connection.cursor()
 
-        res = {}
+        result = {}
+        ids = [m.id for m in metas]
+        for name in names:
+            if name not in {'baptism','tithe', 'church_planting', \
+                    'gathering','small_group', 'organizing_church', \
+                    'praise_thanksgiving', 'offering'}:
+                raise ValueError('Unknown name: %s' % name)
+            result[name] = dict((i, Decimal(0)) for i in ids)
+
+
+        table_a = cls.__table__()
+        table_c = cls.__table__()
+        group = Group.__table__()
+        line = MoveLine.__table__()
+        line_query, fiscalyear_ids = MoveLine.query_get(line)
+
+        columns = [table_a.id]
+        for name in names:
+            columns.append(Sum(Coalesce(Column(line, name), 0)))
+        for sub_ids in grouped_slice(ids):
+            cursor.execute(*table_a.join(table_c,
+                    condition=(table_c.left >= table_a.left)
+                    & (table_c.right <= table_a.right)
+                    ).join(group, condition=group.meta == table_c.id
+                    ).join(line, condition=line.group == group.id
+                    ).select(*columns,
+                    where=line_query & reduce_ids(table_a.id, sub_ids),
+                    group_by=table_a.id))
+            for row in cursor.fetchall():
+                meta_id = row[0]
+                for i, name in enumerate(names, 1):
+                    # SQLite uses float for SUM
+                    if not isinstance(row[i], Decimal):
+                        result[name][meta_id] = Decimal(str(row[i]))
+                    else:
+                        result[name][meta_id] = row[i]
         for meta in metas:
-            res[meta.id] = Decimal('0.0')
-
-        childs = cls.search([
-                ('parent', 'child_of', [m.id for m in metas]),
-                ])
-        meta_sum = {}
-        for meta in childs:
-            meta_sum[meta.id] = Decimal('0.0')
-
-        start_period_ids = Period.get_period_ids('start_%s' % name)
-        end_period_ids = Period.get_period_ids('end_%s' % name)
-        period_ids = list(
-            set(end_period_ids).difference(set(start_period_ids)))
-        with Transaction().set_context(periods=period_ids):
-            groups = Group.search([
-                    ('meta', 'in', [m.id for m in childs]),
-                    ])
-
-        for group in groups:
-            meta_sum[group.meta.id] += (group.baptism)
-
-        for meta in metas:
-            childs = cls.search([
-                    ('parent', 'child_of', [meta.id]),
-                    ])
-            for child in childs:
-                res[meta.id] += meta_sum[child.id]
-            exp = Decimal(str(10.0 ** -meta.currency_digits))
-            res[meta.id] = res[meta.id].quantize(exp)
-        return res
+            for name in names:
+                exp = Decimal(str(10.0 ** -meta.currency_digits))
+                result[name][meta.id] = (
+                    result[name][meta.id].quantize(exp))
+        return result
 
     @classmethod
-    def get_balance(cls, metas, name):
+    def search_balance(cls, name, clause):
         pool = Pool()
+        MoveLine = pool.get('tmi.move.line')
         Group = pool.get('tmi.group')
-        Period = pool.get('tmi.period')
 
-        res = {}
-        for meta in metas:
-            res[meta.id] = Decimal('0.0')
-
-        childs = cls.search([
-                ('parent', 'child_of', [m.id for m in metas]),
-                ])
-
-        meta_sum = {}
-        for meta in childs:
-            meta_sum[meta.id] = Decimal('0.0')
-
-        start_period_ids = Period.get_period_ids('start_%s' % name)
-        end_period_ids = Period.get_period_ids('end_%s' % name)
-        period_ids = list(
-            set(end_period_ids).difference(set(start_period_ids)))
-
-        with Transaction().set_context(periods=period_ids):
-            groups = Group.search([
-                ('meta', 'in', [m.id for m in childs]),
-                ])
-        for group in groups:
-            meta_sum[group.meta.id] += (getattr(group,name))
-
-        for meta in metas:
-            childs = cls.search([
-                    ('parent', 'child_of', [meta.id]),
-                    ])
-            for child in childs:
-                res[meta.id] += meta_sum[child.id]
-            exp = Decimal(str(10.0 ** -meta.currency_digits))
-            res[meta.id] = res[meta.id].quantize(exp)
-        return res
-
-    @staticmethod
-    def order_baptism(tables):
-        pool = Pool()
-        Group = pool.get('tmi.meta.group')
+        _, operator, value = clause
+        Operator = fields.SQL_OPERATORS[operator]
+        table_a = cls.__table__()
+        table_c = cls.__table__()
         group = Group.__table__()
-        table, _ = tables[None]
+        line = MoveLine.__table__()
+        line_query, fiscalyear_ids = MoveLine.query_get(line)
 
-        return [CharLength(table.name), table.name]
+        amount = Sum(Coalesce(Column(line, name), 0))
+        query = table_a.join(table_c,
+            condition=(table_c.left >= table_a.left)
+            & (table_c.right <= table_a.right)
+            ).join(group, condition=group.meta == table_c.id
+            ).join(line, condition=line.group == group.id
+            ).select(table_a.id,
+                where=line_query,
+                group_by=table_a.id,
+                having=Operator(amount, value))
+        return [('id', 'in', query)]
+
+    def _order_balance_field(name):
+        def order_field(tables):
+            pool = Pool()
+            MoveLine = pool.get('tmi.move.line')
+            Group = pool.get('tmi.group')
+            Meta = pool.get('tmi.meta.group')
+            balance_tables = tables.get('balance')
+            if balance_tables is None:
+                table, _ = tables[None]
+
+                table_a = Meta.__table__()
+                table_c = Meta.__table__()
+                group = Group.__table__()
+                line = MoveLine.__table__()
+                line_query, fiscalyear_ids = MoveLine.query_get(line)
+
+                amount = Sum(Coalesce(Column(line, name), 0))
+                query = table_a.join(table_c,
+                    condition=(table_c.left >= table_a.left)
+                    & (table_c.right <= table_a.right)
+                    ).join(group, condition=group.meta == table_c.id
+                    ).join(line, condition=line.group == group.id
+                    ).select(table_a.id, amount.as_('balance_amount'),
+                        where=line_query,
+                        group_by=table_a.id)
+                balance_tables = {
+                    None: (query, query.id == table.id),
+                    }
+                tables['balance'] = balance_tables
+            balance_tables = tables['balance']
+            balance, _ = balance_tables[None]
+            return [balance.balance_amount]
+        return staticmethod(order_field)
+
+    order_baptism = _order_balance_field('baptism')
 
     def get_baptism_target(self, name=None):
         pool = Pool()
